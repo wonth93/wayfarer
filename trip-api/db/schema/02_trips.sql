@@ -14,8 +14,8 @@ CREATE TABLE trips (
   departure_flight_time TIME NOT NULL,
   departure_flight_code VARCHAR(255) NOT NULL,
   return_flight_date DATE NOT NULL,
-  return_flight_code VARCHAR(255) NOT NULL,
   return_flight_time TIME NOT NULL,
+  return_flight_code VARCHAR(255) NOT NULL,
   flight_cost INTEGER NOT NULL DEFAULT 0,
   cover_photo_url VARCHAR(500) NOT NULL,
   active BOOLEAN DEFAULT TRUE
