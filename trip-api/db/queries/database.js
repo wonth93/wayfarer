@@ -1,6 +1,6 @@
 const db = require("../connection");
 
-// Get all user
+// Get all users
 const getUsers = () => {
   return db
     .query("SELECT * FROM users;")
@@ -12,7 +12,7 @@ const getUsers = () => {
     });
 };
 
-// Get all car post on home page
+// Get all trips for user on home page
 const getAllTripsForUser = (user_id) => {
   return db
     .query(
@@ -30,7 +30,28 @@ const getAllTripsForUser = (user_id) => {
       console.log(error.message);
     });
 };
+
+// Get single trip info
+const getSingleTrip = (trip_id) => {
+  return db
+    .query(
+      `
+      SELECT *
+      FROM trip
+      WHERE id = $1;
+    `,
+      [trip_id]
+    )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
 module.export = {
   getUsers,
   getAllTripsForUser,
+  getSingleTrip,
 };
