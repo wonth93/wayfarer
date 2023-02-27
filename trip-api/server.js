@@ -10,21 +10,16 @@ App.use(morgan("dev"));
 App.use(BodyParser.json());
 App.use(Express.static("public"));
 
-// Sample GET route
-App.get("/api/data", (req, res) =>
-  res.json({
-    message: "Seems to work!",
-  })
-);
-
 //Resource routes
 //route for trips
+const usersRoutes = require("./routes/users-api")
 const tripApiRoutes = require("./routes/trips-api");
 const activityApiRoutes = require("./routes/activities-api");
 
 //Mount all resource routes
-App.use("/trips", tripApiRoutes);
-App.use("/activities", activityApiRoutes);
+App.use("/api/users", usersRoutes)
+App.use("/api/trips", tripApiRoutes);
+App.use("/api/activities", activityApiRoutes);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
