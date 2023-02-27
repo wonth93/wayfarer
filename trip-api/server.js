@@ -12,12 +12,12 @@ App.use(Express.static("public"));
 
 //Resource routes
 //route for trips
-const usersRoutes = require("./routes/users-api")
+const usersRoutes = require("./routes/users-api");
 const tripApiRoutes = require("./routes/trips-api");
 const activityApiRoutes = require("./routes/activities-api");
 
 //Mount all resource routes
-App.use("/api/users", usersRoutes)
+App.use("/api/users", usersRoutes);
 App.use("/api/trips", tripApiRoutes);
 App.use("/api/activities", activityApiRoutes);
 
