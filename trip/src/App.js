@@ -49,9 +49,9 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <h1>{message}</h1>
       <button onClick={fetchData}>Fetch Data</button>
-      <Navbar />
       <TripList />
     </div>
   );
