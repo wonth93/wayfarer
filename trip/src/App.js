@@ -6,13 +6,11 @@ import Welcome from "./components/Welcome";
 import { useGlobalContext } from "./context";
 
 function App() {
-  const { message, fetchData, state, login, logout } = useGlobalContext();
+  const { state, login, logout } = useGlobalContext();
 
   return (
     <div className="App">
       <Navbar />
-      <h1>{message}</h1>
-      <button onClick={fetchData}>Fetch Data</button>
       {!state.user && (
         <>
           <button onClick={login}>Login</button>

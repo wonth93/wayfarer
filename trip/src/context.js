@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import { getUserFromUsers } from "./helpers/selectors";
 
 const AppContext = React.createContext();
 
@@ -52,6 +53,9 @@ const AppProvider = ({ children }) => {
     }));
   };
 
+  // Logged In User
+  const loggedUser = getUserFromUsers(state.users, state.user);
+
   //test
   const [message, setMessage] = useState("Click the button to load data!");
   const [userid, setUserid] = useState(1);
@@ -66,16 +70,6 @@ const AppProvider = ({ children }) => {
     });
   };
 
-  // //Login function
-  // const login = () => {
-  //   axios.get(`${url}api/users/login/${userid}`).then((response) => {
-  //     console.log(response.data);
-  //     if (response.data === "Success") {
-  //       setLoggedin(true);
-  //     }
-  //   });
-  // };
-
   return (
     <AppContext.Provider
       value={{
@@ -84,6 +78,7 @@ const AppProvider = ({ children }) => {
         fetchData,
         login,
         logout,
+        loggedUser,
         loggedin,
         setLoggedin,
         userid,

@@ -2,11 +2,12 @@ import React from 'react'
 import { useGlobalContext } from '../context';
 
 const Navbar = () => {
-  const { state } = useGlobalContext(); 
+  const { loggedUser } = useGlobalContext(); 
+
   return (
     <>
     <div>Navbar</div>
-    {state.user && `Welcome back!`}
+    {loggedUser && `Welcome back, ${loggedUser.name}!`}
     </>
   )
 }
