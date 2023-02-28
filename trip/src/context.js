@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
 
-const url = "http://localhost:8080/";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -32,6 +31,7 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  // Calling all the data and setting application state
   useEffect(() => {
     Promise.all([
       axios.get("/api/trips"),
@@ -70,8 +70,6 @@ const AppProvider = ({ children }) => {
   //     }
   //   });
   // };
-
-  // //Logout function
 
   return (
     <AppContext.Provider
