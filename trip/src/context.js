@@ -15,22 +15,6 @@ const AppProvider = ({ children }) => {
     user: cookies.get("user_id"),
   });
 
-  //Login function
-  const login = () => {
-    cookies.set("user_id", 2, { path: "/" });
-    setState({
-      user: cookies.get("user_id"),
-    });
-  };
-
-  //Logout function
-  const logout = () => {
-    cookies.remove("user_id", { path: "/" });
-    setState({
-      user: "",
-    });
-  };
-
   // Calling all the data and setting application state
   useEffect(() => {
     Promise.all([
@@ -42,10 +26,31 @@ const AppProvider = ({ children }) => {
         ...prev,
         trips: trips.data.trips,
         users: users.data.users,
-        species: activities.data.activities,
+        activities: activities.data.activities,
       }));
     });
   }, []);
+
+  //Login function
+  const login = () => {
+    cookies.set("user_id", 1, { path: "/" });
+    // setState({
+    //   user: cookies.get("user_id"),
+    // });
+    setState((prev) => ({
+      ...prev,
+      user: cookies.get("user_id"),
+    }));
+  };
+
+  //Logout function
+  const logout = () => {
+    cookies.remove("user_id", { path: "/" });
+    setState((prev) => ({
+      ...prev,
+      user: "",
+    }));
+  };
 
   //test
   const [message, setMessage] = useState("Click the button to load data!");
