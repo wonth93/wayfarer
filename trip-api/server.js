@@ -2,6 +2,8 @@ const Express = require("express");
 const App = Express();
 const BodyParser = require("body-parser");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const PORT = 8080;
 
 // Express Configuration
@@ -9,6 +11,8 @@ App.use(BodyParser.urlencoded({ extended: false }));
 App.use(morgan("dev"));
 App.use(BodyParser.json());
 App.use(Express.static("public"));
+App.use(cookieParser());
+App.use(cors());
 
 //Resource routes
 //route for trips

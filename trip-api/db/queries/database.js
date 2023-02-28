@@ -1,17 +1,5 @@
 const db = require("../connection");
 
-// Get all users
-const getUsers = () => {
-  return db
-    .query("SELECT * FROM users;")
-    .then((data) => {
-      return data.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-};
-
 // Get all trips for user on home page
 const getAllTripsForUser = (user_id) => {
   return db
@@ -51,7 +39,6 @@ const getSingleTrip = (trip_id) => {
 };
 
 module.export = {
-  getUsers,
   getAllTripsForUser,
   getSingleTrip,
 };

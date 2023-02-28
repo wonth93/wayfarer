@@ -16,13 +16,12 @@ router.get("/", (req, res) => {
 // User login
 router.get("/login/:id", (req, res) => {
   res.cookie("user_id", req.params.id);
-  res.redirect("/");
+  res.end("Success")
 });
 
 // User logout
-router.post("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   res.clearCookie("user_id");
-  res.redirect("/");
 });
 
 module.exports = router;

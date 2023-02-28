@@ -19,7 +19,7 @@ router.get("/myTrips", (req, res) => {
   const user_id = req.cookies.user_id;
 
   tripQueries
-    .getMyTrips(user_id)
+    .getAllTripsForUser(user_id)
     .then((cars) => {
       res.send({ cars });
     })

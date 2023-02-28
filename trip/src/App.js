@@ -38,6 +38,8 @@ import TripList from "./components/TripList";
 
 function App() {
   const [message, setMessage] = useState("Click the button to load data!");
+  const [userid, setUserid] = useState(1)
+  const [loggedin, setLoggedin] = useState(false);
 
   const fetchData = () => {
     axios.get("/api/users").then((response) => {
@@ -47,11 +49,22 @@ function App() {
     });
   };
 
+  const login = () => {
+    axios.get(`http://localhost:8080/api/users/login/${userid}`).then((response) => {
+      console.log(response.data);
+      if(response.data === "Success") {
+        setLoggedin(true);
+      }
+    });
+  }
+
   return (
     <div className="App">
       <Navbar />
       <h1>{message}</h1>
       <button onClick={fetchData}>Fetch Data</button>
+      {!loggedin && <button onClick={login}>Login</button>}
+      {loggedin && <button>Logout</button>}
       <TripList />
     </div>
   );
