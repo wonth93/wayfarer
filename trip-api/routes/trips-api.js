@@ -3,6 +3,17 @@ const router = express.Router();
 const db = require("../db/connection");
 const tripQueries = require("../db/queries/database");
 
+// Show all trips - to test if the database is connect to the server
+router.get("/", (req, res) => {
+  db.query(`SELECT * FROM trips;`)
+    .then((trips) => {
+      res.json(trips.rows);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    })
+});
+
 // Get all trips for user
 router.get("/myTrips", (req, res) => {
   const user_id = req.cookies.user_id;
