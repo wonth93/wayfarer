@@ -4,14 +4,13 @@ const db = require("../db/connection");
 
 // Show all users - to test if the database is connect to the server
 router.get("/", (req, res) => {
-  // db.query(`SELECT * FROM users;`)
-  //   .then((users) => {
-  //     res.json({ users });
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).json({ error: err.message });
-  //   })
-    res.json({ message: "working!" })
+  db.query(`SELECT * FROM users;`)
+    .then((users) => {
+      res.json(users.rows);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    })
 });
 
 // User login
