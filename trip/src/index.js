@@ -4,8 +4,14 @@ import "./index.css";
 import "./styles/layout.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { AppProvider } from "./context";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <AppProvider>
+    <App />
+  </AppProvider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -10,13 +10,13 @@ router.get("/", (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
-    })
+    });
 });
 
 // User login
 router.get("/login/:id", (req, res) => {
   res.cookie("user_id", req.params.id);
-  res.end("Success")
+  res.end("Success");
 });
 
 // User logout
