@@ -4,20 +4,11 @@ const db = require("../db/connection");
 const tripQueries = require("../db/queries/tripQueries");
 
 // Show all trips - to test if the database is connect to the server
-// router.get("/", (req, res) => {
-//   db.query(`SELECT * FROM trips;`)
-//     .then((trips) => {
-//       res.json(trips.rows);
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ error: err.message });
-//     });
-// });
 router.get("/", (req, res) => {
   tripQueries
     .getAllTrips()
-    .then((users) => {
-      res.json({ users });
+    .then((trips) => {
+      res.json({ trips });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

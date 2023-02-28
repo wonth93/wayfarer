@@ -4,16 +4,6 @@ const db = require("../db/connection");
 const userQueries = require("../db/queries/userQueries");
 
 // Show all users - to test if the database is connect to the server
-// router.get("/", (req, res) => {
-//   userQueries
-//     .getAllUsers()
-//     .then((users) => {
-//       res.json(users.rows);
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ error: err.message });
-//     });
-// });
 router.get("/", (req, res) => {
   userQueries
     .getAllUsers()
