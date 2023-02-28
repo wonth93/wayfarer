@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   const [loggedin, setLoggedin] = useState(false);
 
   const fetchData = () => {
-    axios.get("/api/users").then((response) => {
+    axios.get("/api/trips").then((response) => {
       console.log(response.data);
       console.log(response.data.message);
       setMessage(response.data.message);
