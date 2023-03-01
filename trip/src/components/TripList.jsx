@@ -8,7 +8,7 @@ const TripList = () => {
 
   if (userTrips.length < 1) {
     return (
-      <div>No cocktails matched your criteria</div>
+      <div>No trips yet!</div>
     );
   }
 
