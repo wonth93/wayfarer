@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db/connection");
 const tripQueries = require("../db/queries/tripQueries");
 
 // Show all trips - to test if the database is connect to the server
@@ -21,8 +20,8 @@ router.get("/myTrips", (req, res) => {
 
   tripQueries
     .getAllTripsForUser(user_id)
-    .then((cars) => {
-      res.send({ cars });
+    .then((trips) => {
+      res.send({ trips });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
