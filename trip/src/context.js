@@ -59,7 +59,7 @@ const AppProvider = ({ children }) => {
   const userTrips = getAllTripsForUser(state.trips, state.user);
 
   // Activity Functionality
-  const userActivities = getAllActivitiesForUser(state.activities, state.user);
+  const userActivities = getAllActivitiesForUser(state.activities, 1);
 
   //test
   const [message, setMessage] = useState("Click the button to load data!");
