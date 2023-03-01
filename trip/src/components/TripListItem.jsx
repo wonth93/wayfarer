@@ -3,8 +3,10 @@ import { Link } from "react-router-dom"
 
 const TripListItem = ({id, city, country}) => {
   return (
-    <Link to={`/trips/${id}`}>{city}, {country}</Link>
+    <div>
+      <Link to={`/trips/${id}`}>{city}, {country}</Link>
+    </div>
   )
 }
 
-export default TripListItem
+export default TripListItem;

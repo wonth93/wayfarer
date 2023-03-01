@@ -1,10 +1,14 @@
 import React from 'react';
-import { useGlobalContext } from '../../context';
+import ActivityForm from './ActivityForm';
+import ActivityList from './ActivityList';
 
 const TripInfoContainer = () => {
   return (
     <section>
-      abc
+      <ActivityList />
+      <section>
+        <ActivityForm />
+      </section>
     </section>
   )
 }
