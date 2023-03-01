@@ -12,8 +12,17 @@ export function getUserFromUsers(users, user_id) {
   return foundUser;
 }
 
-export function getAllActivitiesForUser(activities, trip_id) {
+export function getTripFromTrips(trips, trip_id) {
+  // takes in an array of objects and returns a single object
+  const tripId = Number(trip_id);
+  const singleTrip = trips.find((trip) => trip.id === tripId);
+  return singleTrip;
+}
+
+export function getAllActivitiesForTrip(activities, trip_id) {
   const trip = Number(trip_id);
-  const filteredActivities = activities.filter((activity) => activity.trip_id === trip);
+  const filteredActivities = activities.filter(
+    (activity) => activity.trip_id === trip
+  );
   return filteredActivities;
 }

@@ -1,14 +1,16 @@
 import React from 'react'
 import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
-import { useParams } from 'react-router-dom';
+import ActivityList from '../components/Single_Trip/ActivityList';
+import ActivityForm from '../components/Single_Trip/ActivityForm';
 
 const SingleTrip = () => {
-  const { id } = useParams();
 
   return (
     <>
     <div>Single Trip</div>
     <TripInfoContainer />
+    <ActivityList />
+    <ActivityForm />
     </>
   )
 }

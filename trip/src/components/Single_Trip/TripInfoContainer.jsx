@@ -1,16 +1,17 @@
 import React from 'react';
-import ActivityForm from './ActivityForm';
-import ActivityList from './ActivityList';
+import TripDetails from './TripsDetails'
+import TripBudget from './TripBudget'
+import WeatherData from './WeatherData';
 
-const TripInfoContainer = () => {
+const TripInfoContainer = ({props}) => {
+  console.log(props)
   return (
-    <section>
-      <ActivityList />
-      <section>
-        <ActivityForm />
-      </section>
-    </section>
+    <div>TripInfoContainer
+      <TripDetails />
+      <TripBudget />
+      <WeatherData />
+    </div>
   )
 }
 
-export default TripInfoContainer;
+export default TripInfoContainer

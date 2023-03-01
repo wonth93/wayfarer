@@ -1,7 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
+import { redirect } from "react-router-dom";
 import axios from "axios";
-import { getUserFromUsers, getAllTripsForUser, getAllActivitiesForUser } from "./helpers/selectors";
+import {
+  getUserFromUsers,
+  getAllTripsForUser,
+  getAllActivitiesForTrip,
+  getTripFromTrips,
+} from "./helpers/selectors";
 
 const AppContext = React.createContext();
 
@@ -14,7 +20,7 @@ const AppProvider = ({ children }) => {
     users: [],
     activities: [],
     user: cookies.get("user_id"),
-    tripid: "",
+    tripId: "",
   });
 
   // Calling all the data and setting application state
@@ -53,47 +59,33 @@ const AppProvider = ({ children }) => {
     }));
   };
 
-  const setTrip = tripid => setState({ ...state, tripid });
-
   // Logged In User
   const loggedUser = getUserFromUsers(state.users, state.user);
 
   //////// Trip Functionality ////////
   const userTrips = getAllTripsForUser(state.trips, state.user);
 
+  const setTrip = (tripId) => setState({ ...state, tripId });
+
+  const singleTrip = getTripFromTrips(state.trips, state.tripId);
+
   // Activity Functionality
-  const userActivities = getAllActivitiesForUser(state.activities, state.tripid);
-
-  //test
-  const [message, setMessage] = useState("Click the button to load data!");
-  const [userid, setUserid] = useState(1);
-  const [loggedin, setLoggedin] = useState(false);
-
-  //Sample
-  const fetchData = () => {
-    axios.get("/api/trips").then((response) => {
-      console.log(response.data);
-      console.log(response.data.message);
-      setMessage(response.data.message);
-    });
-  };
+  const userActivities = getAllActivitiesForTrip(
+    state.activities,
+    state.tripId
+  );
 
   return (
     <AppContext.Provider
       value={{
         state,
-        message,
-        fetchData,
         login,
         logout,
         loggedUser,
-        loggedin,
-        setLoggedin,
-        userid,
-        setUserid,
         userTrips,
         userActivities,
         setTrip,
+        singleTrip,
       }}
     >
       {children}
