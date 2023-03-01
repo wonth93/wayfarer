@@ -13,13 +13,11 @@ function App() {
       <Navbar />
       {!state.user && (
         <>
-          <button onClick={login}>Login</button>
           <Welcome />
         </>
       )}
       {state.user && (
         <>
-          <button onClick={logout}>Logout</button>
           <TripList />
         </>
       )}

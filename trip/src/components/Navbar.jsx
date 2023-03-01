@@ -2,12 +2,13 @@ import React from 'react'
 import { useGlobalContext } from '../context';
 
 const Navbar = () => {
-  const { loggedUser } = useGlobalContext(); 
+  const { loggedUser, login, logout } = useGlobalContext(); 
 
   return (
     <>
     <div>Navbar</div>
-    {loggedUser && `Welcome back, ${loggedUser.name}!`}
+    {!loggedUser && <button onClick={login}>Login</button>}
+    {loggedUser && <p>Welcome back, {loggedUser.name}! <button onClick={logout}>Logout</button></p>}
     </>
   )
 }
