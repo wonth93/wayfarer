@@ -34,7 +34,6 @@ const ActivityForm = () => {
 
   //Getting lat and long from address
   const mapAPIkey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-  console.log(mapAPIkey)
   Geocode.setApiKey(`${mapAPIkey}`);
   // Geocode.setApiKey(mapAPIkey);
 
