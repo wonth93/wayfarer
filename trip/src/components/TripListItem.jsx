@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 const TripListItem = ({id, city, country}) => {
   return (
-    <p>{city}, {country}</p>
+    <Link to={`/trips/${id}`}>{city}, {country}</Link>
   )
 }
 

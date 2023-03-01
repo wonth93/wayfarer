@@ -4,11 +4,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import SingleTrip from "./pages/SingleTrip";
-import { useGlobalContext } from "./context";
 
 function App() {
-  const { state } = useGlobalContext();
-
   return (
     <Router>
       <div className="App">
