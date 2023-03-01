@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import { getUserFromUsers } from "./helpers/selectors";
+import { getUserFromUsers, getAllTripsForUser } from "./helpers/selectors";
 
 const AppContext = React.createContext();
 
@@ -32,12 +32,11 @@ const AppProvider = ({ children }) => {
     });
   }, []);
 
+  //////// User Functionality ////////
+
   //Login function
   const login = () => {
     cookies.set("user_id", 1, { path: "/" });
-    // setState({
-    //   user: cookies.get("user_id"),
-    // });
     setState((prev) => ({
       ...prev,
       user: cookies.get("user_id"),
@@ -55,6 +54,9 @@ const AppProvider = ({ children }) => {
 
   // Logged In User
   const loggedUser = getUserFromUsers(state.users, state.user);
+
+  //////// Trip Functionality ////////
+  const userTrips = getAllTripsForUser(state.trips, state.user);
 
   //test
   const [message, setMessage] = useState("Click the button to load data!");
@@ -83,6 +85,7 @@ const AppProvider = ({ children }) => {
         setLoggedin,
         userid,
         setUserid,
+        userTrips,
       }}
     >
       {children}

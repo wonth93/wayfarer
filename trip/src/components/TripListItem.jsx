@@ -1,8 +1,11 @@
 import React from 'react'
 
-const TripListItem = () => {
+const TripListItem = ({id, city, country}) => {
   return (
-    <div>TripListItem</div>
+    <>
+    <p>My Trips:</p>
+    <p>{city}, {country}</p>
+    </>
   )
 }
 
