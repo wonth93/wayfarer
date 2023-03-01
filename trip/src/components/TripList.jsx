@@ -4,7 +4,7 @@ import { useGlobalContext } from '../context';
 
 const TripList = () => {
 
-  const { state, userTrips } = useGlobalContext(); 
+  const { userTrips } = useGlobalContext(); 
 
   if (userTrips.length < 1) {
     return (
@@ -12,7 +12,6 @@ const TripList = () => {
     );
   }
 
-  console.log(userTrips)
   const userTripItems = userTrips.map((trip) => {
     return (
       <TripListItem key={trip.id} {...trip} />
@@ -21,7 +20,7 @@ const TripList = () => {
 
   return (
     <>
-    <div>TripList</div>
+    <div>My Trips:</div>
     {userTripItems}
     </>
   )
