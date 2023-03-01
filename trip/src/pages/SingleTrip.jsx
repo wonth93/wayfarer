@@ -13,4 +13,4 @@ const SingleTrip = () => {
   )
 }
 
-export default SingleTrip
+export default SingleTrip;
