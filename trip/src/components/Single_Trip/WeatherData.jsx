@@ -11,15 +11,32 @@ const WeatherData = () => {
   )
 
   const apiKey = "42d081443b7676262a361d1f9d415d4d";
-  const [weatherData, setWeatherData] = useState([{}])
+  const [weatherData, setWeatherData] = useState({})
   const { city } = singleTrip
 
+  const getWeatherData = async (city, apiKey) => {
+    try {
+      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+      //console.log(data.weather[0])
+      return data.weather[0];
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?${city}&appid=${apiKey}`)
-  }, []);
+    getWeatherData(city, apiKey).then((data) => {
+      setWeatherData(data)
+    })
+  }, [])
+
+  // const currentWeather = await getWeatherData()
+  // console.log(currentWeather)
 
   return (
-    <div>WeatherData</div>
+    <div>
+      <p>Current weather: {weatherData.description}</p>
+    </div>
   )
 }
 

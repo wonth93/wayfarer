@@ -16,7 +16,8 @@ const ActivityForm = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cost, setCost] = useState(0);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("")
   const [type, setType] = useState("");
 
   const handleSubmit = (event) => {
@@ -66,6 +67,8 @@ const ActivityForm = () => {
       <TextField
     id="time"
     label="Activity Time"
+    value={time}
+    onChange={(e) => setTime(e.target.value)}
     type="time"
     defaultValue="07:30"
     InputLabelProps={{
