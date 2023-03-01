@@ -1,15 +1,3 @@
-// import React from 'react';
-
-// const ActivityForm = () => {
-//   return (
-//     <section>
-//       Activity form:
-//     </section>
-//   )
-// }
-
-// export default ActivityForm;
-
 import React, { useState } from "react";
 import {
   TextField,
@@ -20,10 +8,11 @@ import {
   InputAdornment,
   Button,
 } from "@material-ui/core";
-import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
+import { useGlobalContext } from "../../context";
 
 const ActivityForm = () => {
+  const { loggedUser } = useGlobalContext();
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cost, setCost] = useState(0);
@@ -62,15 +51,32 @@ const ActivityForm = () => {
         fullWidth
         margin="normal"
       />
-      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DateTimePicker
-          label="Activity Date and Time"
-          value={date}
-          onChange={(newDate) => setDate(newDate)}
-          fullWidth
-          margin="normal"
-        />
-      </MuiPickersUtilsProvider> */}
+      <TextField
+        id="date"
+        label="Activity Date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        type="date"
+        halfWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      <TextField
+    id="time"
+    label="Activity Time"
+    type="time"
+    defaultValue="07:30"
+    InputLabelProps={{
+      shrink: true,
+    }}
+    halfWidth
+        margin="normal"
+    inputProps={{
+      step: 300, // 5 min
+    }}
+  />
       <TextField
         label="Activity Type"
         value={type}
