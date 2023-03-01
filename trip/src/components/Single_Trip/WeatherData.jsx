@@ -10,7 +10,8 @@ const WeatherData = () => {
     <p>No trip weather!</p>
   )
 
-  const apiKey = "42d081443b7676262a361d1f9d415d4d";
+  const apiKey = process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY;
+  console.log(apiKey)
   const [weatherData, setWeatherData] = useState({})
   const { city } = singleTrip
 
@@ -29,9 +30,9 @@ const WeatherData = () => {
       setWeatherData(data)
     })
   }, [])
-
-  // const currentWeather = await getWeatherData()
-  // console.log(currentWeather)
+  if (!weatherData) return (
+    <p>Could not get latest weather data</p>
+  )
 
   return (
     <div>

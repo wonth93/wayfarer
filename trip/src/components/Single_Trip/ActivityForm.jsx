@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Geocode from "react-geocode";
 import {
   TextField,
   FormControl,
@@ -11,7 +12,7 @@ import {
 import { useGlobalContext } from "../../context";
 
 const ActivityForm = () => {
-  const { loggedUser } = useGlobalContext();
+  const { loggedUser, singleTrip } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -20,9 +21,62 @@ const ActivityForm = () => {
   const [time, setTime] = useState("")
   const [type, setType] = useState("");
 
+  const activityState = {
+    user_id: loggedUser.id,
+    trip_id: singleTrip.id,
+    activity_name: name,
+    activity_address: address,
+    // lat: 0,
+    // lng: 0,
+    activity_cost: cost,
+    activity_date: date,
+    activity_time: time
+  };
+
+  //Getting lat and long from address
+  const mapAPIkey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+  console.log(mapAPIkey)
+  Geocode.setApiKey(`${mapAPIkey}`);
+  // Geocode.setApiKey(mapAPIkey);
+
+  const getLat = async (address) => {
+    try {
+      const response = await Geocode.fromAddress(address);
+      const { lat } = response.results[0].geometry.location;
+      return lat;
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const getLng = async (address) => {
+    try {
+      const response = await Geocode.fromAddress(address);
+      const { lng } = response.results[0].geometry.location;
+      return lng;
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const addCoordinates = async (a) => {
+    a.lat = await getLat(a.activity_address);
+    a.lng = await getLng(a.activity_address);
+    return a;
+  };
+
+  // Functionality to create activity - eventually move to context and trigger re-render of activity list
+  const createActivity = (activityInfo) => {
+    addCoordinates(activityInfo)
+    console.log(activityInfo)
+    //axios.post etc...
+  }
+
+  // Function upon submitting form
   const handleSubmit = (event) => {
     event.preventDefault();
     // Do something with the form data, such as sending it to a server
+    createActivity(activityState)
   };
 
   return (
@@ -58,7 +112,7 @@ const ActivityForm = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         type="date"
-        halfWidth
+        fullWidth
         margin="normal"
         InputLabelProps={{
           shrink: true,
@@ -70,11 +124,10 @@ const ActivityForm = () => {
     value={time}
     onChange={(e) => setTime(e.target.value)}
     type="time"
-    defaultValue="07:30"
     InputLabelProps={{
       shrink: true,
     }}
-    halfWidth
+    fullWidth
         margin="normal"
     inputProps={{
       step: 300, // 5 min
