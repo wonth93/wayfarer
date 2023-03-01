@@ -3,7 +3,7 @@ import React from 'react';
 const ActivityForm = () => {
   return (
     <section>
-      This is activity form
+      Activity form:
     </section>
   )
 }

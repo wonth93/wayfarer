@@ -14,6 +14,7 @@ const AppProvider = ({ children }) => {
     users: [],
     activities: [],
     user: cookies.get("user_id"),
+    tripid: "",
   });
 
   // Calling all the data and setting application state
@@ -52,6 +53,8 @@ const AppProvider = ({ children }) => {
     }));
   };
 
+  const setTrip = tripid => setState({ ...state, tripid });
+
   // Logged In User
   const loggedUser = getUserFromUsers(state.users, state.user);
 
@@ -59,7 +62,7 @@ const AppProvider = ({ children }) => {
   const userTrips = getAllTripsForUser(state.trips, state.user);
 
   // Activity Functionality
-  const userActivities = getAllActivitiesForUser(state.activities, 1);
+  const userActivities = getAllActivitiesForUser(state.activities, state.tripid);
 
   //test
   const [message, setMessage] = useState("Click the button to load data!");
@@ -90,6 +93,7 @@ const AppProvider = ({ children }) => {
         setUserid,
         userTrips,
         userActivities,
+        setTrip,
       }}
     >
       {children}

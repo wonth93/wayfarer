@@ -20,7 +20,7 @@ const ActivityList = () => {
 
   return (
     <section>
-      This is activity list
+      Activity list:
       <section>
         {userActivityItems}
       </section>

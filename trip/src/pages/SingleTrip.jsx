@@ -7,7 +7,7 @@ const SingleTrip = () => {
 
   return (
     <>
-    <div>SingleTrip</div>
+    <div>Single Trip</div>
     <TripInfoContainer />
     </>
   )
