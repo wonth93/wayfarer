@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import TripList from "./components/TripList";
-import Welcome from "./components/Welcome";
+import Home from "./pages/Home";
+import SingleTrip from "./pages/SingleTrip";
 import { useGlobalContext } from "./context";
 
 function App() {
-  const { state, login, logout } = useGlobalContext();
+  const { state } = useGlobalContext();
 
   return (
-    <div className="App">
-      <Navbar />
-      {!state.user && (
-        <>
-          <Welcome />
-        </>
-      )}
-      {state.user && (
-        <>
-          <TripList />
-        </>
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/trips/:trip_id" element={<SingleTrip />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
