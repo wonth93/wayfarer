@@ -10,11 +10,12 @@ const WeatherData = () => {
     <p>No trip weather!</p>
   )
 
-  const apiKey = "";
+  const apiKey = "42d081443b7676262a361d1f9d415d4d";
   const [weatherData, setWeatherData] = useState([{}])
+  const { city } = singleTrip
 
   useEffect(() => {
-    axios.get("https://api.openweathermap.org/data/2.5/weather?")
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?${city}&appid=${apiKey}`)
   }, []);
 
   return (
