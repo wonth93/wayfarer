@@ -11,3 +11,9 @@ export function getUserFromUsers(users, user_id) {
   const foundUser = users.find((user) => user.id === user_id_num);
   return foundUser;
 }
+
+export function getAllActivitiesForUser(activities, user_id) {
+  const user = Number(user_id);
+  const filteredActivities = activities.filter((activity) => activity.user_id === user);
+  return filteredActivities;
+}

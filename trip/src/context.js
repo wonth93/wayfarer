@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import { getUserFromUsers, getAllTripsForUser } from "./helpers/selectors";
+import { getUserFromUsers, getAllTripsForUser, getAllActivitiesForUser } from "./helpers/selectors";
 
 const AppContext = React.createContext();
 
@@ -58,6 +58,9 @@ const AppProvider = ({ children }) => {
   //////// Trip Functionality ////////
   const userTrips = getAllTripsForUser(state.trips, state.user);
 
+  // Activity Functionality
+  const userActivities = getAllActivitiesForUser(state.activities, state.user);
+
   //test
   const [message, setMessage] = useState("Click the button to load data!");
   const [userid, setUserid] = useState(1);
@@ -86,6 +89,7 @@ const AppProvider = ({ children }) => {
         userid,
         setUserid,
         userTrips,
+        userActivities,
       }}
     >
       {children}
