@@ -12,7 +12,7 @@ import { useGlobalContext } from "../../context";
 import axios from "axios";
 
 const ActivityForm = () => {
-  const { loggedUser, singleTrip } = useGlobalContext();
+  const { user, singleTrip } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -22,15 +22,15 @@ const ActivityForm = () => {
   const [type, setType] = useState("");
 
   const activityState = {
-    user_id: loggedUser.id,
-    trip_id: singleTrip.id,
-    activity_name: name,
-    activity_address: address,
-    // lat: 0,
-    // lng: 0,
-    activity_cost: cost,
-    activity_date: date,
-    activity_time: time
+    // user_id: user,
+    // trip_id: singleTrip.id,
+    // activity_name: name,
+    // activity_address: address,
+    // // lat: 0,
+    // // lng: 0,
+    // activity_cost: cost,
+    // activity_date: date,
+    // activity_time: time
   };
 
   //Getting lat and long from address

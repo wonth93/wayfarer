@@ -14,13 +14,14 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const cookies = new Cookies();
 
-  //Setting up app state
+  //Setting up global app state
   const [state, setState] = useState({
     trips: [],
     users: [],
     activities: [],
     user: cookies.get("user_id"),
     tripId: "",
+    trip: {},
   });
 
   // Calling all the data and setting application state

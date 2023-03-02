@@ -3,13 +3,14 @@ import TripDetails from './TripsDetails'
 import TripBudget from './TripBudget'
 import WeatherData from './WeatherData';
 
-const TripInfoContainer = ({props}) => {
-  console.log(props)
+const TripInfoContainer = ({trip}) => {
+  //console.log(props)
   return (
-    <div>TripInfoContainer
-      <TripDetails />
-      <TripBudget />
-      <WeatherData />
+    <div>----TripInfoContainer -----
+      <TripDetails trip={trip}/>
+      {/* <TripBudget />
+      <WeatherData /> */}
+      ----TripInfoContainer -----
     </div>
   )
 }

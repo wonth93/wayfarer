@@ -37,7 +37,7 @@ const getSingleTrip = (trip_id) => {
     .query(
       `
       SELECT *
-      FROM trip
+      FROM trips
       WHERE id = $1;
     `,
       [trip_id]
