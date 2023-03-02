@@ -11,7 +11,7 @@ import {
 import { useGlobalContext } from "../../context";
 
 const ActivityForm = () => {
-  const { loggedUser, singleTrip } = useGlobalContext();
+  const { loggedUser, singleTrip, addActivity } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -138,7 +138,7 @@ const ActivityForm = () => {
         fullWidth
         margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="primary" onClick={addActivity}>
         Submit
       </Button>
     </form>
