@@ -14,4 +14,18 @@ router.get("/", (req, res) => {
     });
 });
 
+// Get all activities for trip
+router.get("/:trip_id", (req, res) => {
+  const { trip_id } = req.params;
+
+  activityQueries
+    .getAllActivitiesForTrip(trip_id)
+    .then((activities) => {
+      res.json(activities);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;

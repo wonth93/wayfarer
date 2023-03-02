@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
-import ActivityList from '../components/Single_Trip/ActivityList';
-import ActivityForm from '../components/Single_Trip/ActivityForm';
+import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
+import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
 import { useGlobalContext } from '../context';
 import { getTripFromTrips } from '../helpers/selectors';
 import { useParams } from 'react-router-dom';
@@ -16,8 +16,8 @@ const SingleTrip = () => {
     setLoading(true)
     async function getTrip() {
       try {
-        const response = await fetch(`http://localhost:8080/api/trips/${id}`);
-        const data = await response.json();
+        const tripResponse = await fetch(`http://localhost:8080/api/trips/${id}`);
+        const data = await tripResponse.json();
         console.log(data)
         if (data) {
         setTrip(data)
@@ -48,8 +48,7 @@ const SingleTrip = () => {
     <>
     <div>Single Trip to {trip.city}, {trip.country}</div>
     <TripInfoContainer trip={trip}/>
-    {/* <ActivityList trip={trip} />
-    <ActivityForm trip={trip}/> */}
+    <ActivityContainer trip={trip} />
     </>
   )
 }

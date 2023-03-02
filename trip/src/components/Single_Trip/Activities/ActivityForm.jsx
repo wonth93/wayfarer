@@ -8,11 +8,13 @@ import {
   InputAdornment,
   Button,
 } from "@material-ui/core";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../../context";
 import axios from "axios";
+import { useParams } from 'react-router-dom'
 
-const ActivityForm = () => {
-  const { user, singleTrip } = useGlobalContext();
+const ActivityForm = ({addTrip}) => {
+  const { state } = useGlobalContext();
+  const { id } = useParams()
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -22,15 +24,15 @@ const ActivityForm = () => {
   const [type, setType] = useState("");
 
   const activityState = {
-    // user_id: user,
-    // trip_id: singleTrip.id,
-    // activity_name: name,
-    // activity_address: address,
-    // // lat: 0,
-    // // lng: 0,
-    // activity_cost: cost,
-    // activity_date: date,
-    // activity_time: time
+    user_id: state.user,
+    trip_id: id,
+    activity_name: name,
+    activity_address: address,
+    lat: 0,
+    lng: 0,
+    activity_cost: cost,
+    activity_date: date,
+    activity_time: time
   };
 
   //Getting lat and long from address
@@ -64,12 +66,12 @@ const ActivityForm = () => {
     return a;
   };
 
-  // Functionality to create activity - eventually move to context and trigger re-render of activity list
-  const createActivity = (activityInfo) => {
-    addCoordinates(activityInfo)
-    // console.log(activityInfo)
+  // Functionality to create activity - eventually move and trigger re-render of activity list
+  const createActivityAndSendToDb = async (activityInfo) => {
+    const updatedActivityState = await addCoordinates(activityInfo)
+    console.log(updatedActivityState)
     //axios.post etc...
-    return axios
+    //return axios
     // .put(`/api/activities/${}`)
   }
 
@@ -77,7 +79,7 @@ const ActivityForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Do something with the form data, such as sending it to a server
-    createActivity(activityState)
+    createActivityAndSendToDb(activityState)
   };
 
   return (

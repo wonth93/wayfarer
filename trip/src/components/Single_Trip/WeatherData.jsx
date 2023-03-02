@@ -4,16 +4,12 @@ import { useGlobalContext } from "../../context";
 
 import React from 'react'
 
-const WeatherData = () => {
-  const { singleTrip } = useGlobalContext();
-  if (!singleTrip) return (
-    <p>No trip weather!</p>
-  )
+const WeatherData = ({trip}) => {
 
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY;
 
   const [weatherData, setWeatherData] = useState({})
-  const { city } = singleTrip
+  const { city } = trip
 
   const getWeatherData = async (city, apiKey) => {
     try {
