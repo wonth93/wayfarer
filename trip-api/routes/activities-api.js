@@ -28,4 +28,40 @@ router.get("/:trip_id", (req, res) => {
     });
 });
 
+router.post("/add", (req, res) => {
+  const {
+    user_id,
+    trip_id,
+    activity_name,
+    activity_address,
+    lat,
+    long,
+    activity_cost,
+    activity_date,
+    activity_time,
+    activity_type,
+  } = req.body;
+
+  activityQueries
+    .addActivity(
+      user_id,
+      trip_id,
+      activity_name,
+      activity_address,
+      lat,
+      long,
+      activity_cost,
+      activity_date,
+      activity_time,
+      activity_type
+    )
+    .then((trips) => {
+      console.log("trips", trips);
+      res.json({ trips });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;

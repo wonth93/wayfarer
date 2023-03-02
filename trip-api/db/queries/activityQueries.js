@@ -31,4 +31,41 @@ const getAllActivitiesForTrip = (trip_id) => {
     });
 };
 
-module.exports = { getAllActivities, getAllActivitiesForTrip };
+const addActivity = (
+  user_id,
+  trip_id,
+  activity_name,
+  activity_address,
+  lat,
+  long,
+  activity_cost,
+  activity_date,
+  activity_time,
+  activity_type
+) => {
+  return db
+    .query(
+      `INSERT INTO activities (user_id, trip_id, activity_name, activity_address, lat, long, activity_cost, activity_date, activity_time, activity_type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;`,
+      [
+        user_id,
+        trip_id,
+        activity_name,
+        activity_address,
+        lat,
+        long,
+        activity_cost,
+        activity_date,
+        activity_time,
+        activity_type,
+      ]
+    )
+    .then((res) => {
+      console.log("res.rows", res.rows);
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log("DB error adding trip: " + err.message);
+    });
+};
+
+module.exports = { getAllActivities, getAllActivitiesForTrip, addActivity };

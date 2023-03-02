@@ -32,7 +32,7 @@ const ActivityContainer = ({trip}) => {
   }, [])
 
   //Functionality to add an activity 
-  const addTrip = (activityState) => { 
+  const addActivity = (activityState) => { 
     axios
       .post("http://localhost:8080/api/activities/add", {
         user_id: activityState.user_id,
@@ -40,10 +40,11 @@ const ActivityContainer = ({trip}) => {
         activity_name: activityState.activity_name,
         activity_address: activityState.activity_address,
         lat: activityState.lat,
-        lng: activityState.lng,
+        long: activityState.long,
         activity_cost: activityState.activity_cost,
-        activity_date: activityState.date,
-        activity_time: activityState.activity_time      
+        activity_date: activityState.activity_date,
+        activity_time: activityState.activity_time,   
+        activity_type: activityState.activity_type  
       })
       .then((res) => {
         const newTrip = res.data.activities[0];
@@ -51,7 +52,8 @@ const ActivityContainer = ({trip}) => {
       })
       .then((newActivities) => {
         setActivities([...activities, newActivities]);
-      });
+      })
+      .catch(err => console.log(err));
   };
 
   // Render
@@ -67,7 +69,7 @@ const ActivityContainer = ({trip}) => {
     return (
       <>
       <p>Can't seem to fetch activity details</p>
-      <ActivityForm addTrip={addTrip}/>
+      <ActivityForm addActivity={addActivity}/>
       </>
     )
   }
@@ -75,7 +77,7 @@ const ActivityContainer = ({trip}) => {
   return (
     <div>ActivityContainer
       <ActivityList activities={activities}/>
-      <ActivityForm addTrip={addTrip}/>
+      <ActivityForm addActivity={addActivity}/>
     </div>
   )
 }

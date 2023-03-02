@@ -12,7 +12,7 @@ import { useGlobalContext } from "../../../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const ActivityForm = ({addTrip}) => {
+const ActivityForm = ({addActivity}) => {
   const { state } = useGlobalContext();
   const { id } = useParams()
 
@@ -29,10 +29,11 @@ const ActivityForm = ({addTrip}) => {
     activity_name: name,
     activity_address: address,
     lat: 0,
-    lng: 0,
+    long: 0,
     activity_cost: cost,
     activity_date: date,
-    activity_time: time
+    activity_time: time,
+    activity_type: type
   };
 
   //Getting lat and long from address
@@ -62,7 +63,7 @@ const ActivityForm = ({addTrip}) => {
 
   const addCoordinates = async (a) => {
     a.lat = await getLat(a.activity_address);
-    a.lng = await getLng(a.activity_address);
+    a.long = await getLng(a.activity_address);
     return a;
   };
 
@@ -70,6 +71,7 @@ const ActivityForm = ({addTrip}) => {
   const createActivityAndSendToDb = async (activityInfo) => {
     const updatedActivityState = await addCoordinates(activityInfo)
     console.log(updatedActivityState)
+    addActivity(updatedActivityState)
     //axios.post etc...
     //return axios
     // .put(`/api/activities/${}`)
