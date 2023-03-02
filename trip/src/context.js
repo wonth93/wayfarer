@@ -75,11 +75,6 @@ const AppProvider = ({ children }) => {
     state.tripId
   );
 
-  // add single activity
-  const addActivity = () => {
-    console.log('click')
-  }
-
   return (
     <AppContext.Provider
       value={{
@@ -91,7 +86,6 @@ const AppProvider = ({ children }) => {
         userActivities,
         setTrip,
         singleTrip,
-        addActivity,
       }}
     >
       {children}

@@ -9,9 +9,10 @@ import {
   Button,
 } from "@material-ui/core";
 import { useGlobalContext } from "../../context";
+import axios from "axios";
 
 const ActivityForm = () => {
-  const { loggedUser, singleTrip, addActivity } = useGlobalContext();
+  const { loggedUser, singleTrip } = useGlobalContext();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -66,8 +67,10 @@ const ActivityForm = () => {
   // Functionality to create activity - eventually move to context and trigger re-render of activity list
   const createActivity = (activityInfo) => {
     addCoordinates(activityInfo)
-    console.log(activityInfo)
+    // console.log(activityInfo)
     //axios.post etc...
+    return axios
+    // .put(`/api/activities/${}`)
   }
 
   // Function upon submitting form
@@ -138,7 +141,7 @@ const ActivityForm = () => {
         fullWidth
         margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary" onClick={addActivity}>
+      <Button type="submit" variant="contained" color="primary">
         Submit
       </Button>
     </form>
