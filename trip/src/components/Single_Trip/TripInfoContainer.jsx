@@ -8,8 +8,8 @@ const TripInfoContainer = ({trip}) => {
   return (
     <div>----TripInfoContainer -----
       <TripDetails trip={trip}/>
-      {/* <TripBudget />
-      <WeatherData /> */}
+      {/* <TripBudget /> */}
+      <WeatherData trip={trip}/>
       ----TripInfoContainer -----
     </div>
   )
