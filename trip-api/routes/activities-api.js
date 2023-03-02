@@ -55,9 +55,9 @@ router.post("/add", (req, res) => {
       activity_time,
       activity_type
     )
-    .then((trips) => {
-      console.log("trips", trips);
-      res.json({ trips });
+    .then((activities) => {
+      //console.log("trips", trips);
+      res.json({ activities });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

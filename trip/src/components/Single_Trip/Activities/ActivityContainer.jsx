@@ -4,11 +4,12 @@ import ActivityForm from './ActivityForm'
 import ActivityList from './ActivityList'
 import axios from 'axios'
 
-const ActivityContainer = ({trip}) => {
+const ActivityContainer = () => {
 
   const {id} = useParams()
   const [loading, setLoading] = useState(false)
   const [activities, setActivities] = useState([])
+  // const [renderActivities, setRenderActivities] = useState(1)
 
   // Load all activity data on render
   useEffect(() => {
@@ -29,9 +30,9 @@ const ActivityContainer = ({trip}) => {
       }
     }
     getActivities()
-  }, [])
+  }, [setActivities])
 
-  //Functionality to add an activity 
+  //Functionality to add an activity - pass this down to Activity Form as a prop so activities state is updated on submit
   const addActivity = (activityState) => { 
     axios
       .post("http://localhost:8080/api/activities/add", {
@@ -47,11 +48,12 @@ const ActivityContainer = ({trip}) => {
         activity_type: activityState.activity_type  
       })
       .then((res) => {
+        console.log(res)
         const newTrip = res.data.activities[0];
         return newTrip;
       })
-      .then((newActivities) => {
-        setActivities([...activities, newActivities]);
+      .then((newActivity) => {
+        setActivities([...activities, newActivity]);
       })
       .catch(err => console.log(err));
   };
