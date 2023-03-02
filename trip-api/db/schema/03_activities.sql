@@ -11,7 +11,7 @@ CREATE TABLE activities (
   lat DECIMAL(8,6),
   long DECIMAL(9,6),
   activity_cost INTEGER NOT NULL DEFAULT 0,
-  activity_date DATE NOT NULL,
+  activity_date VARCHAR(255) NOT NULL,
   activity_time TIME NOT NULL,
   activity_type VARCHAR(255) NOT NULL
 );

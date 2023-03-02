@@ -2,7 +2,7 @@ import React from 'react'
 
 const Welcome = () => {
   return (
-    <div>Welcome</div>
+    <div>Welcome @ welcome.jsx under home.jsx</div>
   )
 }
 

@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <>
-    <div>Navbar</div>
+    <div>Navbar @ Navbar.jsx</div>
     {!loggedUser && <button onClick={login}>Login</button>}
     {loggedUser && <p>Welcome back, {loggedUser.name}! <button onClick={logout}>Logout</button></p>}
     </>

@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <>
-      <div>Home</div>
+      <div>Home @ Home.jsx</div>
       {!state.user && <Welcome />}
       {state.user && <TripList />}
     </>
