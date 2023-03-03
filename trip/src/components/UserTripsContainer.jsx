@@ -12,29 +12,10 @@ const UserTripsContainer = () => {
     try {
       const response = await fetch(`http://localhost:8080/api/trips`);
       const data = await response.json();
-      console.log(data)
-      //if data.drinks = null
       const { trips } = data;
       if (trips) {
         console.log(trips)
         setTrips(trips)
-        // const newCocktails = trips.map((item) => {
-        //   const {
-        //     idDrink,
-        //     strDrink,
-        //     strDrinkThumb,
-        //     strAlchoholic,
-        //     strGlass
-        //   } = item;
-        //   return {
-        //     id: idDrink,
-        //     name: strDrink,
-        //     image: strDrinkThumb,
-        //     info: strAlchoholic,
-        //     glass: strGlass
-        //   };
-        // });
-        // setCocktails(newCocktails);
       } else {
         setTrips([]);
       }
@@ -43,35 +24,11 @@ const UserTripsContainer = () => {
       console.log(error.response);
       setLoading(false);
     }
-  }, []);
+  }, [setTrips]);
 
   useEffect(() => {
     fetchUserTrips();
-  }, []);
-
-
-  // // for one user only
-  // useEffect(() => {
-  //   setLoading(true)
-  //   const getTrips = useCallback(async () => {
-  //     try {
-  //       const tripResponse = await fetch(`http://localhost:8080/api/trips`);
-  //       const data = await tripResponse.json();
-  //       if (data) {
-  //         setTrips(data);
-  //       } else {
-  //         setTrips([]);
-  //       }
-  //       setLoading(false)
-  //     } catch (error) {
-  //       console.log(error);
-  //       setLoading(false)
-  //     }
-  //   }
-  //   getTrips();
-  // }, [setTrips]);
-
-  // console.log(trips)
+  }, [fetchUserTrips]);
 
   const addTrip = (tripState) => {
     axios
@@ -92,7 +49,8 @@ const UserTripsContainer = () => {
         cover_photo_url: tripState.cover_photo_url
       })
       .then((res) => {
-        const newTrip = res.data.trips[0];
+        //console.log(res.data)
+        const newTrip = res.data.trip[0];
         return newTrip;
       })
       .then((newTrip) => {
@@ -103,7 +61,7 @@ const UserTripsContainer = () => {
   return (
     <div>UserTripsContainer
       <TripList trips={trips}/>
-      <TripForm />
+      <TripForm addTrip={addTrip}/>
     </div>
   )
 }
