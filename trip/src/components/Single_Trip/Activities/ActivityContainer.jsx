@@ -21,13 +21,13 @@ const ActivityContainer = () => {
         console.log(data)
         if (data) {
         setActivities(data)
-      } else {
+        } else {
         setActivities(null)
-      }
-      setLoading(false)
+        }
+        setLoading(false)
       } catch (error) {
         setLoading(false);
-      }
+        }
     }
     getActivities()
   }, [setActivities])
@@ -66,7 +66,7 @@ const ActivityContainer = () => {
       </>
     )
   }
-
+  // **** this is not rendering under tokyo
   if (!activities) {
     return (
       <>
