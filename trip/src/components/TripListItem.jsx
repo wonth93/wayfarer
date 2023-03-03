@@ -4,6 +4,7 @@ import { useGlobalContext } from '../context';
 
 const TripListItem = ({id, city, country}) => {
   //const { setTrip } = useGlobalContext();
+  console.log(city, country)
   return (
     <div>
       <Link to={`/trips/${id}`}>{city}, {country}</Link>

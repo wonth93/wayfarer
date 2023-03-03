@@ -12,16 +12,21 @@ const TripList = ({trips}) => {
     );
   }
 
-  const userTripItems = trips.map((trip) => {
-    return (
-      <TripListItem key={trip.id} {...trip} />
-    )
-  })
+  // if (!trips) {
+  //   return (
+  //     <div>No trips yet!</div>
+  //   );
+  // }
+
+  console.log(trips)
 
   return (
     <>
     <div>My Trips:</div>
-    {userTripItems}
+    {/* {trips.length < 1} */}
+    {trips && trips.map((trip) => {
+      return <TripListItem key={trip.id} {...trip}/>
+    })}
     </>
   )
 }

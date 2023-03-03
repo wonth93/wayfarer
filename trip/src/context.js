@@ -23,6 +23,7 @@ const AppProvider = ({ children }) => {
     tripId: "",
     trip: {},
   });
+  const [userTrips, setUserTrips] = useState([]);
 
   // Calling all the data and setting application state
   useEffect(() => {
@@ -37,6 +38,7 @@ const AppProvider = ({ children }) => {
         users: users.data.users,
         activities: activities.data.activities,
       }));
+      setUserTrips([...trips.data.trips]);
     });
   }, []);
 
@@ -64,11 +66,11 @@ const AppProvider = ({ children }) => {
   const loggedUser = getUserFromUsers(state.users, state.user);
 
   //////// Trip Functionality ////////
-  const userTrips = getAllTripsForUser(state.trips, state.user);
+  //const userTrips = getAllTripsForUser(state.trips, state.user);
 
-  const setTrip = (tripId) => setState({ ...state, tripId });
+  // const setTrip = (tripId) => setState({ ...state, tripId });
 
-  const singleTrip = getTripFromTrips(state.trips, state.tripId);
+  // const singleTrip = getTripFromTrips(state.trips, state.tripId);
 
   // Activity Functionality
   const userActivities = getAllActivitiesForTrip(
@@ -84,9 +86,10 @@ const AppProvider = ({ children }) => {
         logout,
         loggedUser,
         userTrips,
+        setUserTrips,
         userActivities,
-        setTrip,
-        singleTrip,
+        // setTrip,
+        // singleTrip,
       }}
     >
       {children}
