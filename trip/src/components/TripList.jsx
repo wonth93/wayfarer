@@ -2,17 +2,17 @@ import React from 'react'
 import TripListItem from "./TripListItem"
 import { useGlobalContext } from '../context';
 
-const TripList = () => {
+const TripList = ({trips}) => {
 
-  const { userTrips } = useGlobalContext(); 
+  // const { userTrips } = useGlobalContext();
 
-  if (userTrips.length < 1) {
+  if (trips.length < 1) {
     return (
       <div>No trips yet!</div>
     );
   }
 
-  const userTripItems = userTrips.map((trip) => {
+  const userTripItems = trips.map((trip) => {
     return (
       <TripListItem key={trip.id} {...trip} />
     )

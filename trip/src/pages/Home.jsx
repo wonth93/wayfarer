@@ -62,7 +62,7 @@ const Home = () => {
     <>
       <div>Home @ Home.jsx
       {!state.user && <Welcome />}
-      {state.user && <TripList />}
+      {state.user && <TripList trips={trips}/>}
       {state.user && <TripForm addTrip={addTrip} />}
       </div>
     </>
