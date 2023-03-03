@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
-
-const center = {
-  lat: 49.246292,
-  lng: -123.116226
-};
-
 function Map({activities}) {
+  const containerStyle = {
+    width: '400px',
+    height: '400px'
+  };
+  
+  const center = {
+    lat: 49.246292,
+    lng: -123.116226
+  };
+  
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY
