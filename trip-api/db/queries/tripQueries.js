@@ -50,8 +50,55 @@ const getSingleTrip = (trip_id) => {
     });
 };
 
+// Add a trip
+
+const addTrip = (
+  user_id,
+  city,
+  country,
+  hotel_name,
+  hotel_address,
+  hotel_cost,
+  departure_flight_date,
+  departure_flight_time,
+  departure_flight_code,
+  return_flight_date,
+  return_flight_time,
+  return_flight_code,
+  flight_cost,
+  cover_photo_url
+) => {
+  return db
+    .query(
+      `INSERT INTO trips (user_id, city, country, hotel_name, hotel_address, hotel_cost, departure_flight_date, departure_flight_time, departure_flight_code, return_flight_date, return_flight_time, return_flight_code, flight_cost, cover_photo_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *;`,
+      [
+        user_id,
+        city,
+        country,
+        hotel_name,
+        hotel_address,
+        hotel_cost,
+        departure_flight_date,
+        departure_flight_time,
+        departure_flight_code,
+        return_flight_date,
+        return_flight_time,
+        return_flight_code,
+        flight_cost,
+        cover_photo_url
+      ]
+    )
+    .then((res) => {
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 module.exports = {
   getAllTrips,
   getAllTripsForUser,
   getSingleTrip,
+  addTrip,
 };

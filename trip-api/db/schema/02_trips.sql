@@ -1,7 +1,7 @@
 -- Drop old tables
 DROP TABLE IF EXISTS trips CASCADE;
 
--- Create car info table
+-- Create trips info table
 CREATE TABLE trips (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
