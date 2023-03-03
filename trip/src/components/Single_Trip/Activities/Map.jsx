@@ -57,22 +57,26 @@ function Map({activities}) {
     }
   };
 
-  const showMarker = async (address) => {
-    setMarkers([
-      ...markers,
-      {
-        address: address,
-        lat: await getLat(address),
-        lng: await getLng(address),
-      },
-    ]);
-  };
+  // const showMarker = async (address) => {
+  //   setMarkers([
+  //     ...markers,
+  //     {
+  //       address: address,
+  //       lat: await getLat(address),
+  //       lng: await getLng(address),
+  //     },
+  //   ]);
+  //   console.log(markers)
+  // };
 
   useEffect(() => {
-    activities &&
-      activities.map((activity) => {
-        return showMarker(activity.activity_address);
-      });
+    // activities &&
+    //   activities.map((activity) => {
+    //     return showMarker(activity.activity_address);
+    //   });
+    if (activities.length > 0) {
+      setMarkers(activities)
+    }
   }, [activities]);
 
   return isLoaded ? (
@@ -86,11 +90,11 @@ function Map({activities}) {
         { /* Child components, such as markers, info windows, etc. */ }
         {markers.map((marker) => (
           <Marker
-            key={marker.lat}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            key={Math.random()}
+            position={{ lat: Number(marker.lat), lng: Number(marker.long) }}
           ></Marker>
         ))}
-        <Marker position={center}></Marker>
+        {/* <Marker position={center}></Marker> */}
         <></>
       </GoogleMap>
   ) : <></>
