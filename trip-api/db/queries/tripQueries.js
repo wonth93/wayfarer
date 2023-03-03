@@ -89,7 +89,7 @@ const addTrip = (
       ]
     )
     .then((res) => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch((err) => {
       console.log(err.message);

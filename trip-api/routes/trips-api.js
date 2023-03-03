@@ -42,4 +42,48 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Add trip
+router.post("/add", (req, res) => {
+  const {
+    user_id,
+    city,
+    country,
+    hotel_name,
+    hotel_address,
+    hotel_cost,
+    departure_flight_date,
+    departure_flight_time,
+    departure_flight_code,
+    return_flight_date,
+    return_flight_time,
+    return_flight_code,
+    flight_cost,
+    cover_photo_url
+  } = req.body;
+
+  tripQueries
+    .addTrip(
+      user_id,
+      city,
+      country,
+      hotel_name,
+      hotel_address,
+      hotel_cost,
+      departure_flight_date,
+      departure_flight_time,
+      departure_flight_code,
+      return_flight_date,
+      return_flight_time,
+      return_flight_code,
+      flight_cost,
+      cover_photo_url
+    )
+    .then((trip) => {
+      res.json({ trip });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+})
+
 module.exports = router;
