@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ActivityForm from './ActivityForm'
 import ActivityList from './ActivityList'
+import Map from './Map'
 import axios from 'axios'
 
 const ActivityContainer = () => {
@@ -79,6 +80,7 @@ const ActivityContainer = () => {
   return (
     <div>ActivityContainer
       <ActivityList activities={activities}/>
+      <Map activities={activities}/>
       <ActivityForm addActivity={addActivity}/>
     </div>
   )
