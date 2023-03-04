@@ -96,9 +96,23 @@ const addTrip = (
     });
 };
 
+// Delete a trip
+
+const deleteTrip = (tripId) => {
+  return db
+    .query(`DELETE FROM trips WHERE id = $1;`, [tripId])
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
 module.exports = {
   getAllTrips,
   getAllTripsForUser,
   getSingleTrip,
   addTrip,
+  deleteTrip,
 };

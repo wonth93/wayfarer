@@ -32,6 +32,18 @@ const SingleTrip = () => {
     getTrip()
   }, [id])
 
+  const deleteTrip = (id) => {
+    // console.log(`click ${id} delete`)
+    axios
+      .post(`http://localhost:8080/api/trips/${id}/delete`, {
+        trip_id: id
+      })
+      // .then((newTrip) => {
+      //   setTrips([...trips, newTrip]);
+      // })
+      .catch(err => console.log(err))
+  }
+
   if (loading) {
     return (
       <p>Loading trip info</p>
@@ -47,7 +59,7 @@ const SingleTrip = () => {
   return (
     <>
     <div>Single Trip to {trip.city}, {trip.country}</div>
-    <TripInfoContainer trip={trip}/>
+    <TripInfoContainer trip={trip} deleteTrip={deleteTrip}/>
     <ActivityContainer trip={trip} />
     </>
   )

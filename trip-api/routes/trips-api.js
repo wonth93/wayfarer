@@ -42,6 +42,20 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Delete trip
+router.post("/:id/delete", (req, res) => {
+  const trip_id = req.body.trip_id;
+
+  tripQueries
+    .deleteTrip(trip_id)
+    .then((trip) => {
+      res.json({ trip });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+})
+
 // Add trip
 router.post("/add", (req, res) => {
   const {
