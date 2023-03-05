@@ -96,6 +96,70 @@ const addTrip = (
     });
 };
 
+// Edit Trip
+const editTrip = (
+  trip_id,
+  city,
+  country,
+  hotel_name,
+  hotel_address,
+  hotel_cost,
+  departure_flight_date,
+  departure_flight_time,
+  departure_flight_code,
+  return_flight_date,
+  return_flight_time,
+  return_flight_code,
+  flight_cost,
+  cover_photo_url,
+  user_id
+) => {
+  return db
+    .query(
+      `
+      UPDATE trips
+      SET
+      city = $2,
+      country = $3,
+      hotel_name = $4,
+      hotel_address = $5,
+      hotel_cost = $6,
+      departure_flight_date = $7,
+      departure_flight_time = $8,
+      departure_flight_code = $9,
+      return_flight_date = $10,
+      return_flight_time = $11,
+      return_flight_code = $12,
+      flight_cost = $13,
+      cover_photo_url = $14,
+      user_id = $15
+      WHERE trips.id = $1;`,
+      [
+        trip_id,
+        city,
+        country,
+        hotel_name,
+        hotel_address,
+        hotel_cost,
+        departure_flight_date,
+        departure_flight_time,
+        departure_flight_code,
+        return_flight_date,
+        return_flight_time,
+        return_flight_code,
+        flight_cost,
+        cover_photo_url,
+        user_id
+      ]
+    )
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 // Delete a trip
 
 const deleteTrip = (tripId) => {
@@ -115,4 +179,5 @@ module.exports = {
   getSingleTrip,
   addTrip,
   deleteTrip,
+  editTrip,
 };

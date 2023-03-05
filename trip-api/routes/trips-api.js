@@ -42,6 +42,51 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Edit Tirp
+router.post(":id/edit", (req, res) => {
+  const {
+    trip_id,
+    city,
+    country,
+    hotel_name,
+    hotel_address,
+    hotel_cost,
+    departure_flight_date,
+    departure_flight_time,
+    departure_flight_code,
+    return_flight_date,
+    return_flight_time,
+    return_flight_code,
+    flight_cost,
+    cover_photo_url,
+    user_id
+  } = req.body;
+
+  tripQueries
+    .editTrip(
+      trip_id,
+      city,
+      country,
+      hotel_name,
+      hotel_address,
+      hotel_cost,
+      departure_flight_date,
+      departure_flight_time,
+      departure_flight_code,
+      return_flight_date,
+      return_flight_time,
+      return_flight_code,
+      flight_cost,
+      cover_photo_url,
+      user_id)
+    .then((trip) => {
+      res.json({ trip });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+})
+
 // Delete trip
 router.post("/:id/delete", (req, res) => {
   const trip_id = req.body.trip_id;
