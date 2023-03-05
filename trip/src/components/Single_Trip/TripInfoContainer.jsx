@@ -11,7 +11,6 @@ const TripInfoContainer = ({trip, deleteTrip}) => {
       <TripDetails trip={trip}/>
       {/* <TripBudget /> */}
       <WeatherData trip={trip}/>
-      <button onClick={() => deleteTrip(trip.id)}>Delete This Trip</button>
       ----TripInfoContainer -----
     </div>
   )

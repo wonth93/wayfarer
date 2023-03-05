@@ -2,7 +2,7 @@ import React from 'react'
 import TripListItem from "./TripListItem"
 import { useGlobalContext } from '../context';
 
-const TripList = ({trips}) => {
+const TripList = ({trips, deleteTrip}) => {
 
   // const { userTrips } = useGlobalContext();
 
@@ -18,14 +18,14 @@ const TripList = ({trips}) => {
   //   );
   // }
 
-  console.log(trips)
+  // console.log(trips)
 
   return (
     <>
     <div>My Trips:</div>
     {/* {trips.length < 1} */}
     {trips && trips.map((trip) => {
-      return <TripListItem key={trip.id} {...trip}/>
+      return <TripListItem deleteTrip={deleteTrip} key={trip.id} {...trip}/>
     })}
     </>
   )

@@ -58,9 +58,21 @@ const UserTripsContainer = () => {
       })
       .catch(err => console.log(err));
   }
+
+  const deleteTrip = (id) => {
+    return axios
+      .post(`http://localhost:8080/api/trips/${id}/delete`, {
+        trip_id: id
+      })
+      .then((res) => {
+        setTrips([...trips]);
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div>UserTripsContainer
-      <TripList trips={trips}/>
+      <TripList trips={trips} deleteTrip={deleteTrip}/>
       <TripForm addTrip={addTrip}/>
     </div>
   )
