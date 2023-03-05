@@ -33,6 +33,17 @@ const ActivityContainer = () => {
     getActivities()
   }, [setActivities])
 
+  const deleteActivity = (id) => {
+    axios
+      .post(`http://localhost:8080/api/activities/${id}/delete`, {
+        activity_id: id
+      })
+      .then(() => {
+        setActivities([...activities]);
+      })
+      .catch(err => console.log(err));
+  }
+
   //Functionality to add an activity - pass this down to Activity Form as a prop so activities state is updated on submit
   const addActivity = (activityState) => { 
     axios
@@ -79,7 +90,7 @@ const ActivityContainer = () => {
 
   return (
     <div>ActivityContainer
-      <ActivityList activities={activities}/>
+      <ActivityList activities={activities} deleteActivity={deleteActivity}/>
       <Map activities={activities}/>
       <ActivityForm addActivity={addActivity}/>
     </div>

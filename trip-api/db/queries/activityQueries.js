@@ -68,4 +68,17 @@ const addActivity = (
     });
 };
 
-module.exports = { getAllActivities, getAllActivitiesForTrip, addActivity };
+// Delete an activity
+
+const deleteActivity = (activityId) => {
+  return db
+    .query(`DELETE FROM activities WHERE id =$1`, [activityId])
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
+module.exports = { getAllActivities, getAllActivitiesForTrip, addActivity, deleteActivity };

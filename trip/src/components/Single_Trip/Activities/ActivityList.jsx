@@ -2,7 +2,7 @@ import React from 'react';
 import { useGlobalContext } from '../../../context';
 import ActivityListItem from './ActivityListItem'
 
-const ActivityList = ({activities}) => {
+const ActivityList = ({activities, deleteActivity}) => {
 
   if (activities.length < 1) {
     return (
@@ -12,7 +12,7 @@ const ActivityList = ({activities}) => {
 
   const activityList = activities.map((activity) => {
     return (
-      <ActivityListItem key={activity.id} {...activity} />
+      <ActivityListItem deleteActivity={deleteActivity} key={activity.id} {...activity} />
     )
   })
 
