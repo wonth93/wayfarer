@@ -70,43 +70,14 @@ function Map({activities, trip}) {
     }
   };
 
-  const center = {
-    lat: -49,
-    lng: -123
-  }
-
-  // const showMarker = async (address) => {
-  //   setMarkers([
-  //     ...markers,
-  //     {
-  //       address: address,
-  //       lat: await getLat(address),
-  //       lng: await getLng(address),
-  //     },
-  //   ]);
-  //   console.log(markers)
-  // };
 
   useEffect(() => {
-    // activities &&
-    //   activities.map((activity) => {
-    //     return showMarker(activity.activity_address);
-    //   });
+
     if (activities.length > 0) {
       setMarkers(activities)
     }
 
-    // const getAndSetCityCoordinates = async (location) => {
-    //   setCity({
-    //     lat: await getLat(location),
-    //     lng: await getLng(location),
-    //   });
-    // };
-    // getAndSetCityCoordinates(trip.city);
-
   }, [activities]);
-
-  // if (!isLoaded) return <>'Loading maps'</>;
 
   return isLoaded ? (
       <GoogleMap

@@ -1,11 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
 import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
-import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
-import { useGlobalContext } from '../context';
-import { getTripFromTrips } from '../helpers/selectors';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 const SingleTrip = () => {
   const {id} = useParams()
