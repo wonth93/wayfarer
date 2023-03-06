@@ -2,15 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 
-function Map({activities}) {
+function Map({activities, trip}) {
   const containerStyle = {
     width: '400px',
     height: '400px'
-  };
-  
-  const center = {
-    lat: 49.246292,
-    lng: -123.116226
   };
   
   const { isLoaded } = useJsApiLoader({
@@ -22,12 +17,30 @@ function Map({activities}) {
   Geocode.setApiKey(`${mapAPIkey}`);
 
   const [map, setMap] = React.useState(null)
+  const [city, setCity] = useState({ lat: 0, lng: 0 })
+  const [hotel, setHotel] = useState({ lat: 0, lng: 0 })
   const [markers, setMarkers] = useState([{ address: "", lat: 0, lng: 0 }]);
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     // const bounds = new window.google.maps.LatLngBounds(center);
     // map.fitBounds(bounds);
+    const getAndSetCityCoordinates = async (location) => {
+      setCity({
+        lat: await getLat(location),
+        lng: await getLng(location),
+      });
+    };
+    getAndSetCityCoordinates(trip.city);
+
+    const getAndSetHotelCoordinates = async (address) => {
+      setHotel({
+        lat: await getLat(address),
+        lng: await getLng(address),
+      });
+    };
+    getAndSetCityCoordinates(trip.city);
+    getAndSetHotelCoordinates(trip.hotel_address)
 
     setMap(map)
   }, [])
@@ -57,6 +70,11 @@ function Map({activities}) {
     }
   };
 
+  const center = {
+    lat: -49,
+    lng: -123
+  }
+
   // const showMarker = async (address) => {
   //   setMarkers([
   //     ...markers,
@@ -77,12 +95,23 @@ function Map({activities}) {
     if (activities.length > 0) {
       setMarkers(activities)
     }
+
+    // const getAndSetCityCoordinates = async (location) => {
+    //   setCity({
+    //     lat: await getLat(location),
+    //     lng: await getLng(location),
+    //   });
+    // };
+    // getAndSetCityCoordinates(trip.city);
+
   }, [activities]);
+
+  // if (!isLoaded) return <>'Loading maps'</>;
 
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={city}
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
@@ -94,10 +123,11 @@ function Map({activities}) {
             position={{ lat: Number(marker.lat), lng: Number(marker.long) }}
           ></Marker>
         ))}
-        {/* <Marker position={center}></Marker> */}
+        <Marker position={city}></Marker>
+        {hotel.lat && hotel.lng && <Marker position={hotel}></Marker>}
         <></>
       </GoogleMap>
-  ) : <></>
+  ) : <>Loading Maps</>
 }
 
 export default React.memo(Map)

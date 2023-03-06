@@ -5,7 +5,7 @@ import ActivityList from './ActivityList'
 import Map from './Map'
 import axios from 'axios'
 
-const ActivityContainer = () => {
+const ActivityContainer = ({trip}) => {
 
   const {id} = useParams()
   const [loading, setLoading] = useState(false)
@@ -97,7 +97,7 @@ const ActivityContainer = () => {
   return (
     <div>ActivityContainer
       <ActivityList activities={activities} deleteActivity={deleteActivity}/>
-      <Map activities={activities}/>
+      <Map activities={activities} trip={trip} />
       <ActivityForm addActivity={addActivity}/>
     </div>
   )
