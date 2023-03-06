@@ -72,13 +72,18 @@ const addActivity = (
 
 const deleteActivity = (activityId) => {
   return db
-    .query(`DELETE FROM activities WHERE id =$1`, [activityId])
+    .query(`DELETE FROM activities WHERE id =$1 RETURNING id`, [activityId])
     .then((res) => {
       return res.rows;
     })
     .catch((err) => {
       console.log(err.message);
     });
-}
+};
 
-module.exports = { getAllActivities, getAllActivitiesForTrip, addActivity, deleteActivity };
+module.exports = {
+  getAllActivities,
+  getAllActivitiesForTrip,
+  addActivity,
+  deleteActivity,
+};

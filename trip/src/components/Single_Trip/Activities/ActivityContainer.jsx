@@ -35,11 +35,17 @@ const ActivityContainer = () => {
 
   const deleteActivity = (id) => {
     axios
-      .post(`http://localhost:8080/api/activities/${id}/delete`, {
+      .post(`http://localhost:8080/api/activities/delete`, {
         activity_id: id
       })
-      .then(() => {
-        setActivities([...activities]);
+      .then((res) => {
+        console.log(res)
+        const deletedId = res.data.activities[0].id;
+        return deletedId;
+      })
+      .then((deletedId) => {
+        const updatedActivities = activities.filter((activity) => activity.id !== deletedId)
+        setActivities(updatedActivities);
       })
       .catch(err => console.log(err));
   }

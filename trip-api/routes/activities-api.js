@@ -64,18 +64,19 @@ router.post("/add", (req, res) => {
     });
 });
 
-router.post("/:id/delete", (req, res) => {
+router.post("/delete", (req, res) => {
   const activity_id = req.body.activity_id;
-  
+
   activityQueries
     .deleteActivity(activity_id)
     .then((activities) => {
       //console.log("trips", trips);
+      console.log(activities);
       res.json({ activities });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
-})
+});
 
 module.exports = router;
