@@ -8,8 +8,8 @@ const TripInfoContainer = ({trip, deleteTrip}) => {
   //console.log(props)
   return (
     <div>----TripInfoContainer -----
-      <TripDetails trip={trip}/>
-      {/* <TripBudget /> */}
+      <TripDetails trip={trip} />
+      <TripBudget trip={trip} />
       <WeatherData trip={trip}/>
       ----TripInfoContainer -----
     </div>
