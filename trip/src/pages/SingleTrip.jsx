@@ -139,19 +139,19 @@ const SingleTrip = () => {
     {/* <div>Single Trip to {trip.city}, {trip.country}</div> */}
     <Grid container spacing={3}>
       <Grid item xs={12}>
-      <TripInfoContainer trip={trip} activities={activities} />
+        <TripInfoContainer trip={trip} activities={activities} />
       </Grid>
-      <Grid item xs={6}>
-      <Map activities={activities} trip={trip} />
+      <Grid item xs={12} md={6}>
+        <Map activities={activities} trip={trip} />
       </Grid>
-      <Grid item xs={6}>
-      <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add an activitiy
-      </Button>
+      <Grid item xs={12} md={6}>
+        <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Add an activitiy
+        </Button>
       </Grid>
       <Grid item xs={12}>
-        <RecommendationList />
+        <RecommendationList trip={trip} />
       </Grid>
     </Grid>
     {/* <TripInfoContainer trip={trip} activities={activities} /> */}

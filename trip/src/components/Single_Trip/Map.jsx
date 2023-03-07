@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from '@react-google-maps/api';
 import Geocode from "react-geocode";
 
 function Map({activities, trip}) {
@@ -20,6 +20,14 @@ function Map({activities, trip}) {
   const [city, setCity] = useState({ lat: 0, lng: 0 })
   const [hotel, setHotel] = useState({ lat: 0, lng: 0 })
   const [markers, setMarkers] = useState([{ address: "", lat: 0, lng: 0 }]);
+  const [activeMarker, setActiveMarker] = useState(null);
+
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
@@ -90,17 +98,36 @@ function Map({activities, trip}) {
         { /* Child components, such as markers, info windows, etc. */ }
         {markers.map((marker) => (
           <Marker
-            key={Math.random()}
+            key={marker.id}
             position={{ lat: Number(marker.lat), lng: Number(marker.long) }}
-            label={marker.activity_name}
-          ></Marker>
+            // label={marker.activity_name}
+            onClick={() => handleActiveMarker(marker.id)}
+          >
+            {activeMarker === marker.id ? (
+            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+              <>
+              <div>{marker.activity_name}</div>
+              <div>{marker.activity_address}</div>
+              <div>{marker.activity_date}, {marker.activity_time}</div>
+              </>
+            </InfoWindow>
+          ) : null}
+          </Marker>
         ))}
         <Marker 
           position={city}
-          label={trip.city}
-          ></Marker>
-        {hotel.lat && hotel.lng && <Marker position={hotel} label={"Hotel"}></Marker>}
-        <></>
+          // label={trip.city}
+          >
+            <InfoWindow>
+              <div>{trip.city}</div>
+            </InfoWindow>
+          </Marker>
+        {hotel.lat && hotel.lng && 
+        <><Marker position={hotel} label={"Hotel"}>
+            {/* <InfoWindow>
+              <div>Hotel</div>
+            </InfoWindow> */}
+          </Marker></>}
       </GoogleMap>
   ) : <>Loading Maps</>
 }
