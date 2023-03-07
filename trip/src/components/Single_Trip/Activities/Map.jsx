@@ -83,7 +83,7 @@ function Map({activities, trip}) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={city}
-        zoom={10}
+        zoom={11}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
@@ -92,10 +92,14 @@ function Map({activities, trip}) {
           <Marker
             key={Math.random()}
             position={{ lat: Number(marker.lat), lng: Number(marker.long) }}
+            label={marker.activity_name}
           ></Marker>
         ))}
-        <Marker position={city}></Marker>
-        {hotel.lat && hotel.lng && <Marker position={hotel}></Marker>}
+        <Marker 
+          position={city}
+          label={trip.city}
+          ></Marker>
+        {hotel.lat && hotel.lng && <Marker position={hotel} label={"Hotel"}></Marker>}
         <></>
       </GoogleMap>
   ) : <>Loading Maps</>
