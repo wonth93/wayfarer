@@ -1,6 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
 import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
+import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
+import Map from '../components/Single_Trip/Map';
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,7 +20,17 @@ const SingleTrip = () => {
   const [loading, setLoading] = useState(false)
   const [trip, setTrip] = useState(null)
   const [activities, setActivities] = useState([])
-  // const [renderActivities, setRenderActivities] = useState(1)
+  const [open, setOpen] = React.useState(false);
+
+ 
+  // functions for handling form modal
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   //Load single trip info on render
   useEffect(() => {
@@ -115,6 +136,28 @@ const SingleTrip = () => {
     <div>Single Trip to {trip.city}, {trip.country}</div>
     <TripInfoContainer trip={trip} activities={activities} />
     <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
+    <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Open form dialog
+      </Button>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Add a new activities here.
+          </DialogContentText>
+          <ActivityForm addActivity={addActivity} handleClose={handleClose} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          {/* <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button> */}
+        </DialogActions>
+      </Dialog>
+    <Map activities={activities} trip={trip} />
+    {/* <ActivityForm addActivity={addActivity}/> */}
     </>
   )
 }

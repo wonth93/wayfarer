@@ -26,12 +26,12 @@ const TripBudget = ({trip, activities}) => {
     calcTotalCost(trip.hotel_cost, trip.flight_cost, activitiesCost)
   }, [activitiesCost, trip])
 
-  console.log(trip.hotel_cost, trip.flight_cost, activities)
+  // console.log(trip.hotel_cost, trip.flight_cost, activities)
   return (
     <div>TripBudget
       <p>Hotel Cost: {trip.hotel_cost}</p>
       <p>Flight Cost: {trip.flight_cost}</p>
-      <p>Activity Cost: {activitiesCost}</p>
+      <p>Activities Cost: {activitiesCost}</p>
       <p>Total Cost: {totalCost}</p>
     </div>
   )

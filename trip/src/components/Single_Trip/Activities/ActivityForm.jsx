@@ -12,7 +12,7 @@ import { useGlobalContext } from "../../../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const ActivityForm = ({addActivity}) => {
+const ActivityForm = ({addActivity, handleClose}) => {
   const { state } = useGlobalContext();
   const { id } = useParams()
 
@@ -145,7 +145,7 @@ const ActivityForm = ({addActivity}) => {
         fullWidth
         margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="primary" onClick={handleClose}>
         Submit
       </Button>
     </form>
