@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
 import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
+import { RecommendationList } from '../components/Single_Trip/RecommendationList';
 import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
 import Map from '../components/Single_Trip/Map';
 
@@ -11,6 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Grid } from "@material-ui/core";
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -133,14 +135,31 @@ const SingleTrip = () => {
 
   return (
     <>
-    <div>Single Trip to {trip.city}, {trip.country}</div>
-    <TripInfoContainer trip={trip} activities={activities} />
-    <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
-    <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+    {/* <div>Single Trip to {trip.city}, {trip.country}</div> */}
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+      <TripInfoContainer trip={trip} activities={activities} />
+      </Grid>
+      <Grid item xs={6}>
+      <Map activities={activities} trip={trip} />
+      </Grid>
+      <Grid item xs={6}>
+      <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add an activitiy
       </Button>
+      </Grid>
+      <Grid item xs={12}>
+        <RecommendationList />
+      </Grid>
+    </Grid>
+    {/* <TripInfoContainer trip={trip} activities={activities} /> */}
+    {/* <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} /> */}
+    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add an activitiy
+      </Button> */}
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add Activity</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Add a new activities here.
@@ -156,7 +175,7 @@ const SingleTrip = () => {
           </Button> */}
         </DialogActions>
       </Dialog>
-    <Map activities={activities} trip={trip} />
+    {/* <Map activities={activities} trip={trip} /> */}
     {/* <ActivityForm addActivity={addActivity}/> */}
     </>
   )
