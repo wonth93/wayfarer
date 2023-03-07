@@ -4,12 +4,12 @@ import TripBudget from './TripBudget'
 import WeatherData from './WeatherData';
 import { Link } from "react-router-dom";
 
-const TripInfoContainer = ({trip, deleteTrip}) => {
+const TripInfoContainer = ({trip, activities, deleteTrip}) => {
   //console.log(props)
   return (
     <div>----TripInfoContainer -----
       <TripDetails trip={trip} />
-      <TripBudget trip={trip} />
+      <TripBudget trip={trip} activities={activities} />
       <WeatherData trip={trip}/>
       ----TripInfoContainer -----
     </div>
