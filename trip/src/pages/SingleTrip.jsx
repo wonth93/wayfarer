@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Grid } from "@material-ui/core";
+import { Container } from '@material-ui/core'
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -134,7 +135,7 @@ const SingleTrip = () => {
   }
 
   return (
-    <>
+    <Container maxWidth="lg">
     {/* <div>Single Trip to {trip.city}, {trip.country}</div> */}
     <Grid container spacing={3}>
       <Grid item xs={12}>
@@ -177,7 +178,7 @@ const SingleTrip = () => {
       </Dialog>
     {/* <Map activities={activities} trip={trip} /> */}
     {/* <ActivityForm addActivity={addActivity}/> */}
-    </>
+    </Container>
   )
 }
 
