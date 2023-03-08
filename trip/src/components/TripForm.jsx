@@ -11,7 +11,7 @@ import { useGlobalContext } from "../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const TripForm = ({addTrip, closeTripForm}) => {
+const TripForm = ({addTrip, closeTripForm, editTrip, trip}) => {
   const { state } = useGlobalContext();
 
   const [city, setCity] = useState("");
@@ -52,38 +52,40 @@ const TripForm = ({addTrip, closeTripForm}) => {
 
   return (
     <div>
+      <button onClick={() => console.log(trip === undefined)}>test</button>
       <form onSubmit={handleSubmit}>
         <TextField
           label="City"
-          value={city}
+          defaultValue={(trip) ? trip.city : ""}
+          // value={city}
           onChange={(e) => setCity(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Country"
-          value={country}
+          defaultValue={(trip) ? trip.country : ""}
           onChange={(e) => setCountry(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Hotel Name"
-          value={hotel}
+          defaultValue={(trip) ? trip.hotel_name : ""}
           onChange={(e) => setHotel(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Hotel Address"
-          value={address}
+          defaultValue={(trip) ? trip.hotel_address : ""}
           onChange={(e) => setAddress(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Hotel Cost"
-          value={hotelCost}
+          defaultValue={(trip) ? trip.hotel_cost : ""}
           onChange={(e) => setHotelCost(e.target.value)}
           InputProps={{
             startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -95,7 +97,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         <TextField
           id="date"
           label="Departure Flight Date"
-          value={departureFlightDate}
+          defaultValue={(trip) ? trip.departure_flight_date : ""}
           onChange={(e) => setDepartureFlightDate(e.target.value)}
           type="date"
           fullWidth
@@ -107,7 +109,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         <TextField
           id="time"
           label="Departure Flight Time"
-          value={departureFlightTime}
+          defaultValue={(trip) ? trip.departure_flight_time : ""}
           onChange={(e) => setDepartureFlightTime(e.target.value)}
           type="time"
           InputLabelProps={{
@@ -121,7 +123,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         />
         <TextField
           label="Departure Flight Code"
-          value={departureFlightCode}
+          defaultValue={(trip) ? trip.departure_flight_code : ""}
           onChange={(e) => setDepartureFlightCode(e.target.value)}
           fullWidth
           margin="normal"
@@ -129,7 +131,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         <TextField
           id="date"
           label="Return Flight Date"
-          value={returnFlightDate}
+          defaultValue={(trip) ? trip.return_flight_date : ""}
           onChange={(e) => setReturnFlightDate(e.target.value)}
           type="date"
           fullWidth
@@ -141,7 +143,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         <TextField
           id="time"
           label="Return Flight Time"
-          value={returnFlightTime}
+          defaultValue={(trip) ? trip.return_flight_time : ""}
           onChange={(e) => setReturnFlightTime(e.target.value)}
           type="time"
           InputLabelProps={{
@@ -155,14 +157,14 @@ const TripForm = ({addTrip, closeTripForm}) => {
         />
         <TextField
           label="Return Flight Code"
-          value={returnFlightCode}
+          defaultValue={(trip) ? trip.return_flight_code : ""}
           onChange={(e) => setReturnFlightCode(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
           label="Flight Cost"
-          value={flightCost}
+          defaultValue={(trip) ? trip.flight_cost : ""}
           onChange={(e) => setFlightCost(e.target.value)}
           InputProps={{
             startAdornment: <InputAdornment position="start">$</InputAdornment>,
@@ -173,7 +175,7 @@ const TripForm = ({addTrip, closeTripForm}) => {
         />
         <TextField
           label="Photo URL"
-          value={photo}
+          defaultValue={(trip) ? trip.cover_photo_url : ""}
           onChange={(e) => setPhoto(e.target.value)}
           fullWidth
           margin="normal"

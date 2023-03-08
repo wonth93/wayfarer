@@ -133,7 +133,8 @@ const editTrip = (
       flight_cost = $13,
       cover_photo_url = $14,
       user_id = $15
-      WHERE trips.id = $1;`,
+      WHERE trips.id = $1
+      RETURNING *;`,
       [
         trip_id,
         city,
