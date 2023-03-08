@@ -47,12 +47,16 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTrip(tripState);
+    if (trip) {
+      editTrip(tripState);
+    } else {
+      addTrip(tripState);
+    }
   }
 
   return (
     <div>
-      <button onClick={() => console.log(trip === undefined)}>test</button>
+      {/*<button onClick={() => console.log(trip.id)}>test</button>*/}
       <form onSubmit={handleSubmit}>
         <TextField
           label="City"

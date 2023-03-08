@@ -132,9 +132,9 @@ const SingleTrip = () => {
         .catch(err => console.log(err));
     };
 
-    const editTrip = (tripState, id) => {
+    const editTrip = (tripState) => {
       axios
-        .post(`http://localhost:8080/api/trips/${id}/edit`, {
+        .post(`http://localhost:8080/api/trips/edit`, {
           user_id: tripState.user_id,
           city: tripState.city,
           country: tripState.country,
@@ -149,10 +149,10 @@ const SingleTrip = () => {
           return_flight_code: tripState.return_flight_code,
           flight_cost: tripState.flight_cost,
           cover_photo_url: tripState.cover_photo_url,
-          trip_id: id
+          trip_id: tripState.id
         })
         .then((res) => {
-          //console.log(res.data)
+          console.log(res)
           const newTrip = res.data.trip[0];
           return newTrip;
         })

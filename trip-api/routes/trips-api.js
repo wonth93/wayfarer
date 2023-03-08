@@ -43,7 +43,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Edit Tirp
-router.post(":id/edit", (req, res) => {
+router.post("/edit", (req, res) => {
   const {
     trip_id,
     city,
