@@ -91,6 +91,7 @@ const SingleTrip = () => {
         .then((deletedId) => {
           const updatedActivities = activities.filter((activity) => activity.id !== deletedId)
           setActivities(updatedActivities);
+          setOpen(false);
         })
         .catch(err => console.log(err));
     }
