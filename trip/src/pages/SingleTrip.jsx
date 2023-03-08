@@ -141,29 +141,21 @@ const SingleTrip = () => {
       <Grid item xs={12}>
         <TripInfoContainer trip={trip} activities={activities} />
       </Grid>
-      <Grid item xs={12} md={6}>
-        {/* <Map activities={activities} trip={trip} /> */}
+      <Grid item xs={12} md={7}>
         <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
           Add an activitiy
         </Button>
       </Grid>
-      <Grid item xs={12} md={6}>
-        {/* <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-          Add an activitiy
-        </Button> */}
+      <Grid item xs={12} md={5}>
+    
         <Map activities={activities} trip={trip} />
       </Grid>
       <Grid item xs={12}>
         <RecommendationList trip={trip} />
       </Grid>
     </Grid>
-    {/* <TripInfoContainer trip={trip} activities={activities} /> */}
-    {/* <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} /> */}
-    {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add an activitiy
-      </Button> */}
+
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add Activity</DialogTitle>
         <DialogContent>
@@ -181,8 +173,6 @@ const SingleTrip = () => {
           </Button> */}
         </DialogActions>
       </Dialog>
-    {/* <Map activities={activities} trip={trip} /> */}
-    {/* <ActivityForm addActivity={addActivity}/> */}
     </Container>
   )
 }
