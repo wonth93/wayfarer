@@ -33,11 +33,11 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
           <img src="/logo.png" alt="Logo" className={classes.logo} />
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h2" className={classes.title}>
             My App
           </Typography>
           {!loggedUser && <Button onClick={login} color="inherit">Login</Button>}
-          {loggedUser && <p>Welcome back, {loggedUser.name}! <Link onClick={logout} to={'/'}><Button color="inherit">Logout</Button></Link></p>}
+          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit">Logout</Button></Link></>}
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>

@@ -5,10 +5,33 @@ import "./styles/layout.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { AppProvider } from "./context";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
+import "typeface-source-sans-pro";
+
+// Define your custom typography
+const customTheme = createTheme({
+  typography: {
+    fontFamily: ["Source Sans Pro", "Arial", "sans-serif"].join(","),
+    h1: {
+      fontSize: "2rem",
+      fontWeight: 500,
+      letterSpacing: "-0.01562em",
+    },
+    h2: {
+      fontSize: "1.5rem",
+      fontWeight: 500,
+      letterSpacing: "-0.00833em",
+    },
+    // Add more styles as needed
+  },
+});
 
 ReactDOM.render(
   <AppProvider>
-    <App />
+    <ThemeProvider theme={customTheme}>
+      <App />
+    </ThemeProvider>
   </AppProvider>,
   document.getElementById("root")
 );

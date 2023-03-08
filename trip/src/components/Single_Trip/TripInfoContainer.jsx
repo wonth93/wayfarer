@@ -35,7 +35,7 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
         </Grid>
         <Grid item xs={12} md={8}>
           <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h2" component="h2">
               Your trip to {trip.city}, {trip.country}
             </Typography>
             <Typography gutterBottom variant="body2" color="textSecondary" component="p">
