@@ -114,14 +114,14 @@ function Map({activities, trip}) {
           ) : null}
           </Marker>
         ))}
-        <Marker 
+        {/* <Marker 
           position={city}
           // label={trip.city}
-          >
+            >
             <InfoWindow>
               <div>{trip.city}</div>
             </InfoWindow>
-          </Marker>
+          </Marker> */}
         {hotel.lat && hotel.lng && 
         <><Marker position={hotel} label={"Hotel"}>
             {/* <InfoWindow>
