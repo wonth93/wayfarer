@@ -88,7 +88,7 @@ router.post(":id/edit", (req, res) => {
 })
 
 // Delete trip
-router.post("/:id/delete", (req, res) => {
+router.post("/delete", (req, res) => {
   const trip_id = req.body.trip_id;
 
   tripQueries

@@ -164,14 +164,14 @@ const editTrip = (
 
 const deleteTrip = (tripId) => {
   return db
-    .query(`DELETE FROM trips WHERE id = $1;`, [tripId])
+    .query(`DELETE FROM trips WHERE id = $1 RETURNING id;`, [tripId])
     .then((res) => {
       return res.rows;
     })
     .catch((err) => {
       console.log(err.message);
     });
-}
+};
 
 module.exports = {
   getAllTrips,

@@ -91,11 +91,17 @@ const UserTripsContainer = () => {
 
   const deleteTrip = (id) => {
     return axios
-      .post(`http://localhost:8080/api/trips/${id}/delete`, {
+      .post(`http://localhost:8080/api/trips/delete`, {
         trip_id: id
       })
       .then((res) => {
-        setTrips([...trips]);
+        console.log(res.data.trip[0].id)
+        const deleteId = res.data.trip[0].id;
+        return deleteId;
+      })
+      .then((deleteId) => {
+        const updatedTrips = trips.filter((trip) => trip.id !== deleteId);
+        setTrips(updatedTrips);
       })
       .catch(err => console.log(err))
   }
