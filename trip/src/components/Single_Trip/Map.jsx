@@ -39,7 +39,7 @@ function Map({activities, trip}) {
         lng: await getLng(location),
       });
     };
-    getAndSetCityCoordinates(trip.city);
+    // getAndSetCityCoordinates(trip.city);
 
     const getAndSetHotelCoordinates = async (address) => {
       setHotel({
