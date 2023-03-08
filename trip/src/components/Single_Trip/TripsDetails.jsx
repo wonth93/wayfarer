@@ -8,7 +8,7 @@ const TripsDetails = ({trip}) => {
  
   return (
     <div>
-      <Typography variant="h6">Important Details</Typography>
+      <Typography gutterBottom variant="h6">Important Details</Typography>
       <Box display="flex" alignItems="center"><FlightIcon /><Typography variant="subtitle1">{trip.departure_flight_date} - {trip.return_flight_date}</Typography></Box>
       <Box display="flex" alignItems="top"><HotelIcon /><Typography variant="subtitle1">{trip.hotel_name}, {trip.hotel_address}</Typography></Box>
     </div>

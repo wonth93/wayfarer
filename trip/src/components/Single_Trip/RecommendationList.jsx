@@ -56,7 +56,7 @@ const [loading, setLoading] = useState(false)
             latitude: lat,
             lunit: 'km',
             currency: 'USD',
-            limit: '15',
+            limit: '30',
             lang: 'en_US',
             offset: '5'
           },
@@ -82,8 +82,8 @@ const [loading, setLoading] = useState(false)
   return loading ? (<>Loading</>) : (
     <div>RecommendationList
       <Grid container spacing={2}>
-      {recs.map((rec, i) => {
-        return (
+      {recs.filter((rec) => rec.name && rec.address).map((rec) => {
+         return (
           <Grid item xs={12} sm={6} md={4}>
             <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
           </Grid>
