@@ -35,10 +35,10 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
         </Grid>
         <Grid item xs={12} md={8}>
           <CardContent>
-          <Typography gutterBottom variant="h2" component="h2">
+          <Typography gutterBottom align='center' variant="h2" component="h2">
               Your trip to {trip.city}, {trip.country}
             </Typography>
-            <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+            <Typography gutterBottom align='center' variant="body2" color="textSecondary" component="p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
             </Typography>
           <Grid container spacing={3}>
