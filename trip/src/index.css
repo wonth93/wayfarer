@@ -6,6 +6,16 @@
   box-sizing: border-box;
 }
 
+/* body,
+html {
+  background: linear-gradient(
+    to top,
+    rgba(204, 204, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  background-repeat: no-repeat;
+} */
+
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +24,12 @@ body {
     sans-serif; */
   /* background: linear-gradient(to top, #6e88a6, #8b5fbf);
   opacity: 0.9; */
+  /* background: linear-gradient(
+    to top,
+    rgba(204, 204, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  background-repeat: no-repeat; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
