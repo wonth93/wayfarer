@@ -3,6 +3,7 @@ import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
 import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
 import { RecommendationList } from '../components/Single_Trip/RecommendationList';
 import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
+import TripForm from '../components/TripForm';
 import Map from '../components/Single_Trip/Map';
 
 import Button from '@material-ui/core/Button';
@@ -24,6 +25,7 @@ const SingleTrip = () => {
   const [trip, setTrip] = useState(null)
   const [activities, setActivities] = useState([])
   const [open, setOpen] = React.useState(false);
+  const [openTripForm, setOpenTripForm] = React.useState(false);
 
  
   // functions for handling form modal
@@ -33,6 +35,14 @@ const SingleTrip = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const clickTripForm = () => {
+    setOpenTripForm(true);
+  };
+
+  const closeTripForm = () => {
+    setOpenTripForm(false);
   };
 
   //Load single trip info on render
@@ -122,6 +132,36 @@ const SingleTrip = () => {
         .catch(err => console.log(err));
     };
 
+    const editTrip = (tripState, id) => {
+      axios
+        .post(`http://localhost:8080/api/trips/${id}/edit`, {
+          user_id: tripState.user_id,
+          city: tripState.city,
+          country: tripState.country,
+          hotel_name: tripState.hotel_name,
+          hotel_address: tripState.hotel_address,
+          hotel_cost: tripState.hotel_cost,
+          departure_flight_date: tripState.departure_flight_date,
+          departure_flight_time: tripState.departure_flight_time,
+          departure_flight_code: tripState.departure_flight_code,
+          return_flight_date: tripState.return_flight_date,
+          return_flight_time: tripState.return_flight_time,
+          return_flight_code: tripState.return_flight_code,
+          flight_cost: tripState.flight_cost,
+          cover_photo_url: tripState.cover_photo_url,
+          trip_id: id
+        })
+        .then((res) => {
+          //console.log(res.data)
+          const newTrip = res.data.trip[0];
+          return newTrip;
+        })
+        .then((newTrip) => {
+          setTrip([...trip, newTrip]);
+        })
+        .catch(err => console.log(err));
+    }
+
   // Render components
   if (loading) {
     return (
@@ -141,6 +181,9 @@ const SingleTrip = () => {
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <TripInfoContainer trip={trip} activities={activities} />
+        <Button variant="outlined" color="primary" onClick={clickTripForm}>
+            Edit trip
+        </Button>
       </Grid>
       <Grid item xs={12} md={7}>
         <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
@@ -156,6 +199,24 @@ const SingleTrip = () => {
         <RecommendationList trip={trip} />
       </Grid>
     </Grid>
+
+      <Dialog open={openTripForm} onClose={closeTripForm} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Edit Trip</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Edit your trip here.
+          </DialogContentText>
+          <TripForm editTrip={editTrip} closeTripForm={closeTripForm} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeTripForm} color="primary">
+            Cancel
+          </Button>
+          {/* <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button> */}
+        </DialogActions>
+      </Dialog>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add Activity</DialogTitle>

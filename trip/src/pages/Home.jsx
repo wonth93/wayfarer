@@ -66,7 +66,7 @@ const Home = () => {
 
   return (
     <>
-      <div>Home @ Home.jsx
+      <div>
       {!state.user && <Welcome />}
       {/* {userTrips > 0 && <TripList trips={trips}/>} */}
       {state.user && <UserTripsContainer />}

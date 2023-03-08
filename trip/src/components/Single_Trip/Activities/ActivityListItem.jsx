@@ -9,9 +9,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ActivityForm from "./ActivityForm";
 
 const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, activity_date, activity_cost}) => {
   const [open, setOpen] = React.useState(false);
+  const [openActivityForm, setOpenActivityForm] = React.useState(false);
 
   // functions for handling form modal
   const handleClickOpen = () => {
@@ -19,6 +21,14 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
   };
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const clickActivityForm = () => {
+    setOpenActivityForm(true);
+  };
+
+  const closeActivityForm = () => {
+    setOpenActivityForm(false);
   };
 
   return (
@@ -41,6 +51,28 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
           <Grid item xs={12} sm={2}>
             {/* <Typography variant="h6">Column 4</Typography> */}
             <Typography variant="subtitle1">${activity_cost}</Typography>
+          </Grid>
+          <Grid item xs={12} sm={2}>
+            {/* <Typography variant="h6">Column 5</Typography> */}
+            {/* <Typography variant="subtitle1">Content for column 5</Typography> */}
+            {/*<button onClick={() => deleteActivity(id)}>Delete This Activity</button>*/}
+            <Button variant="outlined" color="primary" onClick={clickActivityForm}>
+              Edit Activity
+            </Button>
+            <Dialog open={openActivityForm} onClose={closeActivityForm} aria-labelledby="form-dialog-title">
+              <DialogTitle id="form-dialog-title">Edit Activity</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                Edit your activity here.
+                </DialogContentText>
+                <ActivityForm />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={closeActivityForm} color="primary">
+                  Cancel
+                </Button>
+              </DialogActions>
+            </Dialog>
           </Grid>
           <Grid item xs={12} sm={2}>
             {/* <Typography variant="h6">Column 5</Typography> */}

@@ -7,8 +7,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
-const TripListItem = ({id, city, country, deleteTrip}) => {
+const TripListItem = ({id, city, country, deleteTrip, departure_flight_date, return_flight_date}) => {
   //const { setTrip } = useGlobalContext();
   const [open, setOpen] = React.useState(false);
 
@@ -23,10 +25,23 @@ const TripListItem = ({id, city, country, deleteTrip}) => {
   console.log(city, country)
   return (
     <div>
-      <Link to={`/trips/${id}`}>{city}, {country}</Link>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-          Delete Trip
-      </Button>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={3}>
+          <Typography variant="h6">Destination</Typography>
+          <Link to={`/trips/${id}`}>{city}, {country}</Link></Grid>
+        <Grid item xs={12} sm={3}>
+          <Typography variant="h6">Departure Day</Typography>
+          <Typography>{departure_flight_date}</Typography></Grid>
+        <Grid item xs={12} sm={3}>
+          <Typography variant="h6">Return Day</Typography>
+          <Typography>{return_flight_date}</Typography></Grid>
+        <Grid item xs={12} sm={3}>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Delete Trip
+          </Button>
+        </Grid>
+      </Grid>
+      
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Warning!</DialogTitle>
         <DialogContent>

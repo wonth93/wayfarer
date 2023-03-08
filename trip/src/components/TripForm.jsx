@@ -11,7 +11,7 @@ import { useGlobalContext } from "../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const TripForm = ({addTrip, handleClose}) => {
+const TripForm = ({addTrip, closeTripForm}) => {
   const { state } = useGlobalContext();
 
   const [city, setCity] = useState("");
@@ -178,7 +178,7 @@ const TripForm = ({addTrip, handleClose}) => {
           fullWidth
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary" onClick={handleClose}>
+        <Button type="submit" variant="contained" color="primary" onClick={closeTripForm}>
           Submit
         </Button>
       </form>
