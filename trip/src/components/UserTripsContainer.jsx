@@ -6,6 +6,7 @@ import TripForm from './TripForm';
 const UserTripsContainer = () => {
   const [loading, setLoading] = useState(true)
   const [trips, setTrips] = useState([]);
+  const [open, setOpen] = React.useState(false);
 
   const fetchUserTrips = useCallback(async () => {
     setLoading(true);
@@ -102,6 +103,7 @@ const UserTripsContainer = () => {
       .then((deleteId) => {
         const updatedTrips = trips.filter((trip) => trip.id !== deleteId);
         setTrips(updatedTrips);
+        setOpen(false);
       })
       .catch(err => console.log(err))
   }
