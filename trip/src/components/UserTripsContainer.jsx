@@ -2,11 +2,27 @@ import React, { useState, useEffect, useCallback} from 'react'
 import axios from 'axios';
 import TripList from './TripList';
 import TripForm from './TripForm';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Grid } from "@material-ui/core";
 
 const UserTripsContainer = () => {
   const [loading, setLoading] = useState(true)
   const [trips, setTrips] = useState([]);
   const [open, setOpen] = React.useState(false);
+
+  // functions for handling form modal
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const fetchUserTrips = useCallback(async () => {
     setLoading(true);
@@ -111,7 +127,27 @@ const UserTripsContainer = () => {
   return (
     <div>UserTripsContainer
       <TripList trips={trips} deleteTrip={deleteTrip} editTrip={editTrip}/>
-      <TripForm addTrip={addTrip}/>
+      {/*<TripForm addTrip={addTrip}/>*/}
+      <Grid item xs={12} md={7}>    
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Add an activitiy
+        </Button>
+      </Grid>
+
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add Trip</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Add a new trip here.
+          </DialogContentText>
+          <TripForm addTrip={addTrip} handleClose={handleClose} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }

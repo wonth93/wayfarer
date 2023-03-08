@@ -161,7 +161,7 @@ const SingleTrip = () => {
         <DialogTitle id="form-dialog-title">Add Activity</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Add a new activities here.
+            Add a new activity here.
           </DialogContentText>
           <ActivityForm addActivity={addActivity} handleClose={handleClose} />
         </DialogContent>
