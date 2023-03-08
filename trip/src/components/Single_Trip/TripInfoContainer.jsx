@@ -26,14 +26,14 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
     <div>
       <Card className={classes.root} elevation={3}>
       <Grid container>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} md={4}>
           <CardMedia
             className={classes.media}
             image={trip.cover_photo_url ? trip.cover_photo_url : "https://unsplash.com/photos/qyAka7W5uMY"}
             title="Image title"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={8}>
+        <Grid item xs={12} md={8}>
           <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
               Your trip to {trip.city}, {trip.country}
@@ -42,15 +42,15 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
             </Typography>
           <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             {/* Column 1 content */}
             <TripDetails trip={trip} />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             {/* Column 2 content */}
             <TripBudget trip={trip} activities={activities} />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             {/* Column 3 content */}
             <WeatherData trip={trip}/>
           </Grid>

@@ -5,6 +5,7 @@ import ActivityList from './ActivityList'
 import Map from '../Map'
 import axios from 'axios'
 
+
 const ActivityContainer = ({trip, activities, deleteActivity, addActivity}) => {
 
   const {id} = useParams()
