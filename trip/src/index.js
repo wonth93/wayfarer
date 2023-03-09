@@ -14,7 +14,7 @@ const customTheme = createTheme({
   typography: {
     fontFamily: ["Source Sans Pro", "Arial", "sans-serif"].join(","),
     h1: {
-      fontSize: "2rem",
+      fontSize: "3rem",
       fontWeight: 500,
       letterSpacing: "-0.01562em",
     },

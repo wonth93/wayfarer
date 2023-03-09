@@ -13,7 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Grid, Container, Box } from "@material-ui/core";
+import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -164,13 +164,13 @@ const SingleTrip = () => {
   // Render components
   if (loading) {
     return (
-      <p>Loading trip info</p>
+      <CircularProgress />
     )
   }
 
   if (!trip) {
     return (
-      <p>Can't seem to fetch trip details</p>
+      <CircularProgress />
     )
   }
 

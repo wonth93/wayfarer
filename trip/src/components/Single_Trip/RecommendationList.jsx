@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Geocode from "react-geocode";
 import RecommendationListItem from './RecommendationListItem';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 export const RecommendationList = ({trip}) => {
 const [recs, setRecs] = useState([])
@@ -79,8 +80,9 @@ const [loading, setLoading] = useState(false)
     })
   }, [city])
 
-  return loading ? (<>Loading</>) : (
-    <div>RecommendationList
+  return loading ? (<CircularProgress />) : (
+    <div>
+      <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
       <Grid container spacing={2}>
       {recs.filter((rec) => rec.name && rec.address).map((rec) => {
          return (

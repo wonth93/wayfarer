@@ -13,11 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    paddingLeft: "2rem",
   },
   logo: {
     height: 40,
     marginRight: theme.spacing(2),
   },
+  button: {
+    paddingRight: "2rem",
+  }
 }));
 
 const Navbar = () => {
@@ -32,12 +36,12 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <img src="/logo.png" alt="Logo" className={classes.logo} />
+          {/* <img src="/logo.png" alt="Logo" className={classes.logo} /> */}
           <Typography variant="h2" className={classes.title}>
-            My App
+            WAYFARER
           </Typography>
-          {!loggedUser && <Button onClick={login} color="inherit">Login</Button>}
-          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit">Logout</Button></Link></>}
+          {!loggedUser && <Button onClick={login} color="inherit" className={classes.button}>Login</Button>}
+          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit" className={classes.button}>Logout</Button></Link></>}
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
