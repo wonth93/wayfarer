@@ -10,8 +10,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ActivityForm from "./ActivityForm";
+import { Box } from "@material-ui/core";
 
-const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, activity_date, activity_cost}) => {
+const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, activity_date, activity_cost, activity_time}) => {
   const [open, setOpen] = React.useState(false);
   const [openActivityForm, setOpenActivityForm] = React.useState(false);
 
@@ -23,28 +24,21 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
     setOpen(false);
   };
 
-  const clickActivityForm = () => {
-    setOpenActivityForm(true);
-  };
-
-  const closeActivityForm = () => {
-    setOpenActivityForm(false);
-  };
-
   return (
-    <div>
-      <Card>
+    <Box sx={{ mb: '1rem' }}>
+      <Card elevation={5}>
       <CardContent>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={2}>
             {/* <Typography variant="h6">Column 1</Typography> */}
             <Typography variant="subtitle1">{activity_date}</Typography>
+            <Typography variant="subtitle1">{activity_time}</Typography>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={2}>
             {/* <Typography variant="h6">Column 2</Typography> */}
             <Typography variant="subtitle1">{activity_name}</Typography>
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={4}>
             {/* <Typography variant="h6">Column 3</Typography> */}
             <Typography>{activity_address}</Typography>
           </Grid>
@@ -53,33 +47,8 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
             <Typography variant="subtitle1">${activity_cost}</Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
-            {/* <Typography variant="h6">Column 5</Typography> */}
-            {/* <Typography variant="subtitle1">Content for column 5</Typography> */}
-            {/*<button onClick={() => deleteActivity(id)}>Delete This Activity</button>*/}
-            <Button variant="outlined" color="primary" onClick={clickActivityForm}>
-              Edit Activity
-            </Button>
-            <Dialog open={openActivityForm} onClose={closeActivityForm} aria-labelledby="form-dialog-title">
-              <DialogTitle id="form-dialog-title">Edit Activity</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                Edit your activity here.
-                </DialogContentText>
-                <ActivityForm />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={closeActivityForm} color="primary">
-                  Cancel
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </Grid>
-          <Grid item xs={12} sm={2}>
-            {/* <Typography variant="h6">Column 5</Typography> */}
-            {/* <Typography variant="subtitle1">Content for column 5</Typography> */}
-            {/*<button onClick={() => deleteActivity(id)}>Delete This Activity</button>*/}
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-              Delete Activity
+              Delete
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
               <DialogTitle id="form-dialog-title">Warning!</DialogTitle>
@@ -101,9 +70,7 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
         </Grid>
       </CardContent>
     </Card>
-      {/* <p>{activity_name}, {activity_address}</p>
-      <button onClick={() => deleteActivity(id)}>Delete This Activity</button> */}
-    </div>
+    </Box>
   )
 }
 

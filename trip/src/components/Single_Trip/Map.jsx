@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { GoogleMap, Marker, useJsApiLoader, InfoWindow } from '@react-google-maps/api';
 import Geocode from "react-geocode";
+import { Box, Typography } from '@material-ui/core';
 
 function Map({activities, trip}) {
   const containerStyle = {
-    width: '400px',
+    width: '500px',
     height: '400px'
   };
   
@@ -88,6 +89,14 @@ function Map({activities, trip}) {
   }, [activities]);
 
   return isLoaded ? (
+      <>
+      <Typography gutterBottom align="center" variant="h2">Your activities map</Typography>
+      <Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // marginTop: '10px'
+        }}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={city}
@@ -129,7 +138,9 @@ function Map({activities, trip}) {
             </InfoWindow> */}
           </Marker></>}
       </GoogleMap>
-  ) : <>Loading Maps</>
+      </Box>
+      </>
+  ) : <Typography gutterBottom align="center" variant="h2">Loading activities map...</Typography>
 }
 
 export default React.memo(Map)

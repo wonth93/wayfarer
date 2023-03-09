@@ -13,8 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Grid } from "@material-ui/core";
-import { Container } from '@material-ui/core'
+import { Grid, Container, Box } from "@material-ui/core";
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -181,15 +180,27 @@ const SingleTrip = () => {
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <TripInfoContainer trip={trip} activities={activities} />
-        <Button variant="outlined" color="primary" onClick={clickTripForm}>
-            Edit trip
-        </Button>
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '10px'
+          }}>
+            <Button variant="outlined" color="primary" onClick={clickTripForm}>
+            Edit Trip Details
+        </Button></Box>
       </Grid>
       <Grid item xs={12} md={7}>
         <ActivityContainer trip={trip} activities={activities} deleteActivity={deleteActivity} addActivity={addActivity} />
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '10px'
+          }}>
+            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
           Add an activitiy
-        </Button>
+        </Button></Box>
       </Grid>
       <Grid item xs={12} md={5}>
     
@@ -201,7 +212,7 @@ const SingleTrip = () => {
     </Grid>
 
       <Dialog open={openTripForm} onClose={closeTripForm} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Edit Trip</DialogTitle>
+        <DialogTitle id="form-dialog-title">Edit Trip Details</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Edit your trip here.

@@ -57,9 +57,9 @@ const WeatherData = ({trip}) => {
     <div>
         <Typography variant="h6">{trip.city} Weather</Typography>
         <Box display="flex" alignItems="center"><CloudIcon /><Typography variant="subtitle1">Current Weather: {weatherData.desc}</Typography></Box>
-        <Box display="flex" alignItems="center"><WbSunnyIcon /><Typography variant="subtitle1">Current Temp: {weatherData.temp}</Typography></Box>
-        <Box display="flex" alignItems="center"><WhatshotIcon /><Typography variant="subtitle1">Today's High: {weatherData.high}</Typography></Box>
-        <Box display="flex" alignItems="center"><AcUnitIcon /><Typography variant="subtitle1">Today's Low: {weatherData.low}</Typography></Box>
+        <Box display="flex" alignItems="center"><WbSunnyIcon /><Typography variant="subtitle1">Current Temp: {weatherData.temp}c</Typography></Box>
+        <Box display="flex" alignItems="center"><WhatshotIcon /><Typography variant="subtitle1">Today's High: {weatherData.high}c</Typography></Box>
+        <Box display="flex" alignItems="center"><AcUnitIcon /><Typography variant="subtitle1">Today's Low: {weatherData.low}c</Typography></Box>
     </div>
   )
 }
