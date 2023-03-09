@@ -20,7 +20,7 @@ const customTheme = createTheme({
     },
     h2: {
       fontSize: "1.5rem",
-      fontWeight: 500,
+      fontWeight: 600,
       letterSpacing: "-0.00833em",
     },
     // Add more styles as needed

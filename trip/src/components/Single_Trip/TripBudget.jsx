@@ -13,7 +13,7 @@ const TripBudget = ({trip, activities}) => {
     // Calculate and set activities cost
     const calcActivitiesCost = (activities) => {
       const totalCost = activities.reduce((acc, curr) => {
-      return acc += curr.activity_cost
+      return acc += Number(curr.activity_cost)
     }, 0)
       setActivitiesCost(totalCost)
     }
