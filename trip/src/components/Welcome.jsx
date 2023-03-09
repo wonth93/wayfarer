@@ -15,7 +15,7 @@ const styles = {
 const Welcome = () => {
   return (
     <Box sx={styles.root}>
-      <Grid container spacing={5} style={{padding: "4rem"}}>
+      <Grid container spacing={5} style={{padding: "4rem", display: "flex", alignItems: "center"}}>
         <Grid item xs={12} md={7}>
           <Typography gutterBottom variant="h1">A Travel App for the Modern Wayfarer.</Typography>
           <Typography gutterBottom variant="h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Typography>
