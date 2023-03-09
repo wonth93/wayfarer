@@ -3,7 +3,7 @@ const db = require("../connection");
 // Get all trips
 const getAllTrips = () => {
   return db
-    .query(`SELECT * FROM trips;`)
+    .query(`SELECT * FROM trips ORDER BY departure_flight_date DESC;`)
     .then((data) => {
       return data.rows;
     })

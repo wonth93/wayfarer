@@ -206,7 +206,7 @@ const SingleTrip = () => {
           <DialogContentText>
             Edit your trip here.
           </DialogContentText>
-          <TripForm editTrip={editTrip} closeTripForm={closeTripForm} trip={trip}/>
+          <TripForm editTrip={editTrip} setTrip={setTrip} closeTripForm={closeTripForm} trip={trip}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={closeTripForm} color="primary">

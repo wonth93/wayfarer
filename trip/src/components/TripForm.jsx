@@ -11,22 +11,23 @@ import { useGlobalContext } from "../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const TripForm = ({addTrip, closeTripForm, editTrip, trip}) => {
+const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
   const { state } = useGlobalContext();
 
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [hotel, setHotel] = useState("");
-  const [address, setAddress] = useState("");
-  const [hotelCost, setHotelCost] = useState(0);
-  const [departureFlightDate, setDepartureFlightDate] = useState("");
-  const [departureFlightTime, setDepartureFlightTime] = useState("");
-  const [departureFlightCode, setDepartureFlightCode] = useState("");
-  const [returnFlightDate, setReturnFlightDate] = useState("");
-  const [returnFlightTime, setReturnFlightTime] = useState("");
-  const [returnFlightCode, setReturnFlightCode] = useState("");
-  const [flightCost, setFlightCost] = useState(0);
-  const [photo, setPhoto] = useState("");
+  const [city, setCity] = useState(trip? trip.city : "");
+  const [country, setCountry] = useState(trip? trip.country : "");
+  const [hotel, setHotel] = useState(trip? trip.hotel_name : "");
+  const [address, setAddress] = useState(trip? trip.hotel_address : "");
+  const [hotelCost, setHotelCost] = useState(trip? trip.hotel_cost : 0);
+  const [departureFlightDate, setDepartureFlightDate] = useState(trip? trip.departure_flight_date : "");
+  const [departureFlightTime, setDepartureFlightTime] = useState(trip? trip.departure_flight_time : "");
+  const [departureFlightCode, setDepartureFlightCode] = useState(trip? trip.departure_flight_code : "");
+  const [returnFlightDate, setReturnFlightDate] = useState(trip? trip.return_flight_date : "");
+  const [returnFlightTime, setReturnFlightTime] = useState(trip? trip.return_flight_time : "");
+  const [returnFlightCode, setReturnFlightCode] = useState(trip? trip.return_flight_code : "");
+  const [flightCost, setFlightCost] = useState(trip? trip.flight_cost : 0);
+  const [photo, setPhoto] = useState(trip? trip.cover_photo_url : "");
+  const [tripID, setTripID] = useState(trip? trip.id : null)
 
   const tripState = {
     user_id: state.user,
@@ -42,13 +43,15 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip}) => {
     return_flight_time: returnFlightTime,
     return_flight_code: returnFlightCode,
     flight_cost: flightCost,
-    cover_photo_url: photo
+    cover_photo_url: photo,
+    id: tripID
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (trip) {
       editTrip(tripState);
+      setTrip(tripState)
     } else {
       addTrip(tripState);
     }
