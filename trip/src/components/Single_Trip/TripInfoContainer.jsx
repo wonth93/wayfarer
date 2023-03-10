@@ -24,7 +24,7 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
   //console.log(props)
   return (
     <div>
-      <Card className={classes.root} elevation={3}>
+      <Card className={[classes.root, "animated-card"]} elevation={3}>
       <Grid container>
         <Grid item xs={12} md={4}>
           <CardMedia
@@ -43,15 +43,12 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
             </Typography>
           <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            {/* Column 1 content */}
             <TripDetails trip={trip} />
           </Grid>
           <Grid item xs={12} md={4}>
-            {/* Column 2 content */}
             <TripBudget trip={trip} activities={activities} />
           </Grid>
           <Grid item xs={12} md={4}>
-            {/* Column 3 content */}
             <WeatherData trip={trip}/>
           </Grid>
         </Grid>
@@ -59,9 +56,6 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
         </Grid>
       </Grid>
     </Card>
-      {/* <TripDetails trip={trip} />
-      <TripBudget trip={trip} activities={activities} />
-      <WeatherData trip={trip}/> */}
     </div>
   )
 }

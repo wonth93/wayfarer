@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: "2rem"
   },
   title: {
     flexGrow: 1,
@@ -30,9 +31,6 @@ const Navbar = () => {
   const classes = useStyles();
 
   return (
-    <>
-    {/* {!loggedUser && <button onClick={login}>Login</button>}
-    {loggedUser && <p>Welcome back, {loggedUser.name}! <Link onClick={logout} to={'/'}><button>Logout</button></Link></p>} */}
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -42,11 +40,9 @@ const Navbar = () => {
           </Typography>
           {!loggedUser && <Button onClick={login} color="inherit" className={classes.button}>Login</Button>}
           {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit" className={classes.button}>Logout</Button></Link></>}
-          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </div>
-    </>
   )
 }
 

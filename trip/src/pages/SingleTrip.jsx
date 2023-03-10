@@ -5,6 +5,7 @@ import { RecommendationList } from '../components/Single_Trip/RecommendationList
 import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
 import TripForm from '../components/TripForm';
 import Map from '../components/Single_Trip/Map';
+import date from 'date-and-time';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -223,9 +224,6 @@ const SingleTrip = () => {
           <Button onClick={closeTripForm} color="primary">
             Cancel
           </Button>
-          {/* <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button> */}
         </DialogActions>
       </Dialog>
 

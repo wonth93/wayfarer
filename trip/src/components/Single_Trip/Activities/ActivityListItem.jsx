@@ -9,10 +9,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import ActivityForm from "./ActivityForm";
 import { Box } from "@material-ui/core";
+import { DateTime } from "luxon";
 
-const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, activity_date, activity_cost, activity_time}) => {
+const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, activity_date, activity_cost, activity_time, activity_type}) => {
   const [open, setOpen] = React.useState(false);
   const [openActivityForm, setOpenActivityForm] = React.useState(false);
 
@@ -24,9 +26,12 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
     setOpen(false);
   };
 
+  console.log(activity_type)
+  console.log(DateTime.fromSQL(activity_date).toFormat('LLL dd yyyy'))
+
   return (
     <Box sx={{ mb: '1rem' }}>
-      <Card elevation={5}>
+      <Card elevation={5} className="animated-card">
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={2}>
@@ -34,21 +39,22 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
             <Typography variant="subtitle1">{activity_date}</Typography>
             <Typography variant="subtitle1">{activity_time}</Typography>
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={3}>
             {/* <Typography variant="h6">Column 2</Typography> */}
             <Typography variant="subtitle1">{activity_name}</Typography>
+            <Typography variant="overline">{activity_type}</Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
             {/* <Typography variant="h6">Column 3</Typography> */}
             <Typography>{activity_address}</Typography>
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={1}>
             {/* <Typography variant="h6">Column 4</Typography> */}
             <Typography variant="subtitle1">${activity_cost}</Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-              Delete
+              <DeleteForeverIcon />
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
               <DialogTitle id="form-dialog-title">Warning!</DialogTitle>

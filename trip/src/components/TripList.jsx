@@ -1,29 +1,19 @@
 import React from 'react'
 import TripListItem from "./TripListItem"
-import { useGlobalContext } from '../context';
+import { Typography } from '@material-ui/core';
 
 const TripList = ({trips, deleteTrip}) => {
 
-  // const { userTrips } = useGlobalContext();
 
   if (trips.length < 1) {
     return (
-      <div>No trips yet!</div>
+      <Typography variant="h2" align="center">No trips yet!</Typography>
     );
   }
 
-  // if (!trips) {
-  //   return (
-  //     <div>No trips yet!</div>
-  //   );
-  // }
-
-  // console.log(trips)
-
   return (
     <>
-    <div>My Trips:</div>
-    {/* {trips.length < 1} */}
+    <Typography variant="h2" align="center">Your Planned Trips</Typography>
     {trips && trips.map((trip) => {
       return <TripListItem deleteTrip={deleteTrip} key={trip.id} {...trip}/>
     })}

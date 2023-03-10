@@ -80,7 +80,7 @@ const [loading, setLoading] = useState(false)
     })
   }, [city])
 
-  return loading ? (<CircularProgress />) : (
+  return loading ? (<Typography align="center"><CircularProgress /></Typography>) : (
     <div>
       <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
       <Grid container spacing={2}>

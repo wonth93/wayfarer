@@ -1,12 +1,12 @@
 import React from 'react';
 import ActivityListItem from './ActivityListItem'
-import { Grid, Box } from '@material-ui/core'
+import { Typography, Box } from '@material-ui/core'
 
 const ActivityList = ({activities, deleteActivity}) => {
 
   if (activities.length < 1) {
     return (
-      <div>No activities yet!</div>
+      <Typography align="center">You haven't planned any activities yet!</Typography>
     );
   }
 

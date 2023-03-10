@@ -8,7 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Grid } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 
 const UserTripsContainer = () => {
   const [loading, setLoading] = useState(true)
@@ -96,14 +96,18 @@ const UserTripsContainer = () => {
   }
 
   return (
-    <div>
+    <Container maxWidth="lg">
       <TripList trips={trips} deleteTrip={deleteTrip} />
-      {/*<TripForm addTrip={addTrip}/>*/}
-      <Grid item xs={12} md={7}>    
+      <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '10px'
+          }}>
         <Button variant="outlined" color="primary" onClick={clickTripForm}>
           Add a trip
         </Button>
-      </Grid>
+      </Box>
 
       <Dialog open={openTripForm} onClose={closeTripForm} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add Trip</DialogTitle>
@@ -119,7 +123,7 @@ const UserTripsContainer = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Container>
   )
 }
 
