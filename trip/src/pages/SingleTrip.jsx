@@ -207,7 +207,7 @@ const SingleTrip = () => {
         <Map activities={activities} trip={trip} />
       </Grid>
       <Grid item xs={12}>
-        {/* <RecommendationList trip={trip} /> */}
+        <RecommendationList trip={trip} />
       </Grid>
     </Grid>
 
