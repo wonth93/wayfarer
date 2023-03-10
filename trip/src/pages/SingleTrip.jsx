@@ -14,7 +14,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
+import { Grid, Container, Box, CircularProgress, Typography } from "@material-ui/core";
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -165,13 +165,13 @@ const SingleTrip = () => {
   // Render components
   if (loading) {
     return (
-      <CircularProgress />
+      <><Typography align="center"><CircularProgress /></Typography></>
     )
   }
 
   if (!trip) {
     return (
-      <CircularProgress />
+      <><Typography align="center"><CircularProgress /></Typography></>
     )
   }
 
@@ -187,7 +187,7 @@ const SingleTrip = () => {
           justifyContent: 'center',
           marginTop: '10px'
           }}>
-            <Button variant="outlined" color="primary" onClick={clickTripForm}>
+            <Button variant='contained' color="primary" onClick={clickTripForm}>
             Edit Trip Details
         </Button></Box>
       </Grid>
@@ -199,7 +199,7 @@ const SingleTrip = () => {
           justifyContent: 'center',
           marginTop: '10px'
           }}>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            <Button variant='contained' color="primary" onClick={handleClickOpen}>
           Add an activitiy
         </Button></Box>
       </Grid>

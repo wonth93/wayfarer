@@ -104,7 +104,7 @@ const UserTripsContainer = () => {
           justifyContent: 'center',
           marginTop: '10px'
           }}>
-        <Button variant="outlined" color="primary" onClick={clickTripForm}>
+        <Button variant='contained' color="primary" onClick={clickTripForm}>
           Add a trip
         </Button>
       </Box>

@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TripListItem = ({id, city, country, deleteTrip, departure_flight_date, return_flight_date, cover_photo_url}) => {
+const TripListItem = ({id, city, country, deleteTrip, departure_flight_date, return_flight_date, cover_photo_url, hotel_name, hotel_address}) => {
   const [open, setOpen] = React.useState(false);
 
   // functions for handling form modal
@@ -54,14 +54,27 @@ const TripListItem = ({id, city, country, deleteTrip, departure_flight_date, ret
       <Grid container spacing={2}>
         <Grid item xs={12} sm={3}>
           <Typography variant="h6">Destination</Typography>
-          <Link to={`/trips/${id}`}><Typography>{city}, {country}</Typography></Link></Grid>
-        <Grid item xs={12} sm={3}>
+          <Typography>{city}, {country}</Typography>
+          <Typography>{hotel_name}, {hotel_address}</Typography>
+        </Grid>
+        <Grid item xs={12} sm={2}>
           <Typography variant="h6">Departure Day</Typography>
           <Typography>{DateTime.fromSQL(departure_flight_date).toFormat('LLLL dd yyyy')}</Typography></Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={2}>
           <Typography variant="h6">Return Day</Typography>
           <Typography>{DateTime.fromSQL(return_flight_date).toFormat('LLLL dd yyyy')}</Typography></Grid>
         <Grid item xs={12} sm={3}>
+        <Button variant='contained' color="primary" href={`/trips/${id}`}>
+            View Trip Details
+          </Button>
+          {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Delete Trip
+          </Button> */}
+        </Grid>
+        <Grid item xs={12} sm={2}>
+        {/* <Button variant='contained' color="primary" href={`/trips/${id}`}>
+            View Trip Details
+          </Button> */}
           <Button variant="outlined" color="primary" onClick={handleClickOpen}>
             Delete Trip
           </Button>
