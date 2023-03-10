@@ -23,7 +23,7 @@ const TripBudget = ({trip, activities}) => {
   useEffect(() => {
      // Calculate and set total trip cost
      const calcTotalCost = (hotel, trip, activities) => {
-      const totalCost = hotel + trip + activities
+      const totalCost = Number(hotel) + Number(trip) + Number(activities)
       setTotalCost(totalCost)
     }
     calcTotalCost(trip.hotel_cost, trip.flight_cost, activitiesCost)

@@ -139,14 +139,14 @@ const SingleTrip = () => {
           country: tripState.country,
           hotel_name: tripState.hotel_name,
           hotel_address: tripState.hotel_address,
-          hotel_cost: tripState.hotel_cost,
+          hotel_cost: Number(tripState.hotel_cost),
           departure_flight_date: tripState.departure_flight_date,
           departure_flight_time: tripState.departure_flight_time,
           departure_flight_code: tripState.departure_flight_code,
           return_flight_date: tripState.return_flight_date,
           return_flight_time: tripState.return_flight_time,
           return_flight_code: tripState.return_flight_code,
-          flight_cost: tripState.flight_cost,
+          flight_cost: Number(tripState.flight_cost),
           cover_photo_url: tripState.cover_photo_url,
           trip_id: tripState.id
         })
@@ -207,7 +207,7 @@ const SingleTrip = () => {
         <Map activities={activities} trip={trip} />
       </Grid>
       <Grid item xs={12}>
-        <RecommendationList trip={trip} />
+        {/* <RecommendationList trip={trip} /> */}
       </Grid>
     </Grid>
 
