@@ -55,10 +55,10 @@ const Navbar = () => {
             </DialogActions>
             <DialogActions>
               {!loggedUser && <Button onClick={closeLoginForm} color="inherit">Cancel</Button>}
-              {!loggedUser && <Button onClick={login} color="inherit" variant='contained'>Login</Button>}
+              {!loggedUser && <Button onClick={login} color="primary" variant='contained'>Login</Button>}
             </DialogActions>
           </Dialog>
-          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'} className={classes.link}><Button className={classes.button}>Logout</Button></Link></>}
+          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'} className={classes.link}><Button color="secondary" className={classes.button}>Logout</Button></Link></>}
         </Toolbar>
       </AppBar>
     </div>
