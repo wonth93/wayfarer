@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import TripInfoContainer from "../components/Single_Trip/TripInfoContainer"
+import TripInfoContainer from "../components/Single_Trip/Trip/TripInfoContainer"
 import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
-import { RecommendationList } from '../components/Single_Trip/RecommendationList';
+import { RecommendationList } from '../components/Single_Trip/Recommendations/RecommendationList';
 import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
-import TripForm from '../components/TripForm';
+import TripForm from '../components/Trips/TripForm';
 import Map from '../components/Single_Trip/Map';
 import date from 'date-and-time';
 
@@ -165,13 +165,13 @@ const SingleTrip = () => {
   // Render components
   if (loading) {
     return (
-      <><Typography align="center"><CircularProgress /></Typography></>
+      <div align="center"><CircularProgress /></div>
     )
   }
 
   if (!trip) {
     return (
-      <><Typography align="center"><CircularProgress /></Typography></>
+      <div align="center"><CircularProgress /></div>
     )
   }
 

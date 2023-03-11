@@ -11,28 +11,13 @@ import React from 'react'
 const WeatherData = ({trip}) => {
 
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY;
-  // const [loading, setLoading] = useState(false)
   const [weatherData, setWeatherData] = useState({ temp: 0, feelsLike: 0, desc: "", high: 0, low: 0 })
   const { city } = trip
 
-  // const getWeatherData = async (city, apiKey) => {
-  //   try {
-  //     const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
-  //     console.log(data)
-  //     // return data.weather[0];
-  //     return data
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   useEffect(() => {
-    // setLoading(true)
     const getWeatherData = async (city, apiKey) => {
       try {
         const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
-        console.log(data)
-        // return data.weather[0];
         return data
       } catch (error) {
         console.log(error)
@@ -49,9 +34,7 @@ const WeatherData = ({trip}) => {
       })
     })
   }, [])
-  // if (loading) return (
-  //   <p>Could not get latest weather data</p>
-  // )
+
 
   return (
     <div>

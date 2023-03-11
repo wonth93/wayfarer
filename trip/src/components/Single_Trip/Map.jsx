@@ -31,16 +31,13 @@ function Map({activities, trip}) {
   };
 
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    // const bounds = new window.google.maps.LatLngBounds(center);
-    // map.fitBounds(bounds);
+
     const getAndSetCityCoordinates = async (location) => {
       setCity({
         lat: await getLat(location),
         lng: await getLng(location),
       });
     };
-    // getAndSetCityCoordinates(trip.city);
 
     const getAndSetHotelCoordinates = async (address) => {
       setHotel({
@@ -79,7 +76,6 @@ function Map({activities, trip}) {
     }
   };
 
-
   useEffect(() => {
 
     if (activities.length > 0) {
@@ -95,7 +91,6 @@ function Map({activities, trip}) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // marginTop: '10px'
         }}>
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -104,12 +99,10 @@ function Map({activities, trip}) {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
         {markers.map((marker) => (
           <Marker
             key={marker.id}
             position={{ lat: Number(marker.lat), lng: Number(marker.long) }}
-            // label={marker.activity_name}
             onClick={() => handleActiveMarker(marker.id)}
           >
             {activeMarker === marker.id ? (
@@ -123,19 +116,8 @@ function Map({activities, trip}) {
           ) : null}
           </Marker>
         ))}
-        {/* <Marker 
-          position={city}
-          // label={trip.city}
-            >
-            <InfoWindow>
-              <div>{trip.city}</div>
-            </InfoWindow>
-          </Marker> */}
         {hotel.lat && hotel.lng && 
         <><Marker position={hotel} label={"Hotel"}>
-            {/* <InfoWindow>
-              <div>Hotel</div>
-            </InfoWindow> */}
           </Marker></>}
       </GoogleMap>
       </Box>

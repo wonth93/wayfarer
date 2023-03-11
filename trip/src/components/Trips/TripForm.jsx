@@ -7,7 +7,7 @@ import {
   InputAdornment,
   Button,
 } from "@material-ui/core";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 

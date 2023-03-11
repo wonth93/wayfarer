@@ -1,7 +1,7 @@
 import React from 'react';
 import TripDetails from './TripsDetails'
 import TripBudget from './TripBudget'
-import WeatherData from './WeatherData';
+import WeatherData from '../WeatherData';
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';

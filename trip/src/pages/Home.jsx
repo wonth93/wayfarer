@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Welcome from "../components/Welcome"
-import TripList from '../components/TripList'
-import TripForm from '../components/TripForm'
+import Welcome from "../components/Homepage/Welcome"
 import { useGlobalContext } from '../context'
-import axios from 'axios'
-import UserTripsContainer from '../components/UserTripsContainer'
+import UserTripsContainer from '../components/Trips/UserTripsContainer'
 
 
 const Home = () => {

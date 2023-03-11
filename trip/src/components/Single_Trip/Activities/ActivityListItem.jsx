@@ -10,7 +10,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import ActivityForm from "./ActivityForm";
 import { Box } from "@material-ui/core";
 import { DateTime } from "luxon";
 

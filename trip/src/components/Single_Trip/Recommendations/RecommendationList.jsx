@@ -8,11 +8,7 @@ import { CircularProgress } from '@material-ui/core';
 export const RecommendationList = ({trip}) => {
 const [recs, setRecs] = useState([])
 const [city, setCity] = useState({})
-const [type, setType] = useState("restaurants")
 const [loading, setLoading] = useState(false)
-
-  // const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/output?keyword=${trip.city}`
-  // const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/output?keyword=${trip.hotel_address}`
 
   const mapAPIkey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   Geocode.setApiKey(`${mapAPIkey}`);
@@ -80,7 +76,7 @@ const [loading, setLoading] = useState(false)
     })
   }, [city])
   
-  if (loading) return (<Typography align="center"><CircularProgress /></Typography>)
+  if (loading) return (<div align="center"><CircularProgress /></div>)
 
   if (!recs) return null;
 
@@ -96,20 +92,4 @@ const [loading, setLoading] = useState(false)
     })}
     </Grid>
   </div>)
-
-
-  // return loading ? (<Typography align="center"><CircularProgress /></Typography>) : (
-  //   <div>
-  //     <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
-  //     <Grid container spacing={2}>
-  //     {recs.length > 0 ?? recs.filter((rec) => rec.name && rec.address).map((rec) => {
-  //        return (
-  //         <Grid item xs={12} sm={6} md={4}>
-  //           <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
-  //         </Grid>
-  //       )
-  //     })}
-  //     </Grid>
-  //   </div>
-  // )
 }

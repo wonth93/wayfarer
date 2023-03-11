@@ -1,13 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Cookies from "universal-cookie";
-import { redirect } from "react-router-dom";
 import axios from "axios";
-import {
-  getUserFromUsers,
-  getAllTripsForUser,
-  getAllActivitiesForTrip,
-  getTripFromTrips,
-} from "./helpers/selectors";
+import { getUserFromUsers } from "./helpers/selectors";
 
 const AppContext = React.createContext();
 
@@ -65,19 +59,6 @@ const AppProvider = ({ children }) => {
   // Logged In User
   const loggedUser = getUserFromUsers(state.users, state.user);
 
-  //////// Trip Functionality ////////
-  //const userTrips = getAllTripsForUser(state.trips, state.user);
-
-  // const setTrip = (tripId) => setState({ ...state, tripId });
-
-  // const singleTrip = getTripFromTrips(state.trips, state.tripId);
-
-  // Activity Functionality
-  const userActivities = getAllActivitiesForTrip(
-    state.activities,
-    state.tripId
-  );
-
   return (
     <AppContext.Provider
       value={{
@@ -87,9 +68,6 @@ const AppProvider = ({ children }) => {
         loggedUser,
         userTrips,
         setUserTrips,
-        userActivities,
-        // setTrip,
-        // singleTrip,
       }}
     >
       {children}

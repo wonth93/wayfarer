@@ -1,7 +1,5 @@
 import React from 'react'
 import { Card, CardMedia, CardContent, Typography, Box } from '@material-ui/core'
-import { Link } from 'react-router-dom'
-// import { }
 
 const RecommendationListItem = ({rec}) => {
 
@@ -17,10 +15,6 @@ const RecommendationListItem = ({rec}) => {
           <Box>
             <Typography gutterBottom variant='subtitle1'>{rec.address ? rec.address : "Multiple Locations"}</Typography>
           </Box>
-          {/* <Box display="flex" justifyContent="space-between">
-            <Typography variant='subtitle1'>Activity Type</Typography>
-            <Typography gutterBottom variant='subtitle1'>{rec.subtype[0].name}</Typography>
-          </Box> */}
         </CardContent>
     </Card>
   )

@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useGlobalContext } from '../../context'
+import React from 'react'
 import { Typography, Box } from '@material-ui/core'
 import FlightIcon from '@material-ui/icons/Flight';
 import HotelIcon from '@material-ui/icons/Hotel';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import FlightLandIcon from '@material-ui/icons/FlightLand';
-import date from 'date-and-time';
 import { DateTime } from "luxon";
-// const dayjs = require('dayjs')
-// const customParseFormat = require('dayjs/plugin/customParseFormat')
-// dayjs.extend(customParseFormat)
 
 const TripsDetails = ({trip}) => {
  
