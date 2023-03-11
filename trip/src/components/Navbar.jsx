@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     paddingRight: "2rem",
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#FFF'
   }
 }));
 
@@ -38,7 +42,9 @@ const Navbar = () => {
         <Toolbar>
           {/* <img src="/logo.png" alt="Logo" className={classes.logo} /> */}
           <Typography variant="h2" className={classes.title}>
-            WAYFARER
+            <Link to={'/'} className={classes.link}>
+              WAYFARER
+            </Link>
           </Typography>
           {!loggedUser && <Button color="inherit" onClick={clickLoginForm} className={classes.button}>Login</Button>}
 
@@ -52,7 +58,7 @@ const Navbar = () => {
               {!loggedUser && <Button onClick={login} color="inherit" variant='contained'>Login</Button>}
             </DialogActions>
           </Dialog>
-          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit" className={classes.button}>Logout</Button></Link></>}
+          {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'} className={classes.link}><Button className={classes.button}>Logout</Button></Link></>}
         </Toolbar>
       </AppBar>
     </div>
