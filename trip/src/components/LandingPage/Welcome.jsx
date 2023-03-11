@@ -33,7 +33,7 @@ const Welcome = () => {
           <Button variant="outlined" color="primary" onClick={clickRegistrationForm}>Create Account</Button>
         </Grid>
         <Grid item xs={12} md={5}>
-          <img align="center" class="animated-card-slow" width="100%" alt="woman in canoe" src="https://i.ibb.co/ZVFK4CJ/roberto-nickson-7-Bjm-DICVlo-E-unsplash-modified.png"></img>
+          <img align="center" className="animated-card-slow" width="100%" alt="woman in canoe" src="https://i.ibb.co/ZVFK4CJ/roberto-nickson-7-Bjm-DICVlo-E-unsplash-modified.png"></img>
         </Grid>
       </Grid>
 

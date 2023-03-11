@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import Welcome from "../components/Homepage/Welcome"
+import React from 'react'
+import Welcome from "../components/LandingPage/Welcome"
 import { useGlobalContext } from '../context'
 import UserTripsContainer from '../components/Trips/UserTripsContainer'
 
