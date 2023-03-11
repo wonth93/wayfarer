@@ -79,19 +79,37 @@ const [loading, setLoading] = useState(false)
         setLoading(false)
     })
   }, [city])
+  
+  if (loading) return (<Typography align="center"><CircularProgress /></Typography>)
 
-  return loading ? (<Typography align="center"><CircularProgress /></Typography>) : (
-    <div>
-      <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
-      <Grid container spacing={2}>
-      {recs.filter((rec) => rec.name && rec.address).map((rec) => {
-         return (
-          <Grid item xs={12} sm={6} md={4}>
-            <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
-          </Grid>
-        )
-      })}
-      </Grid>
-    </div>
-  )
+  if (!recs) return null;
+
+  return (<div>
+    <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
+    <Grid container spacing={2}>
+    {recs.filter((rec) => rec.name && rec.address).map((rec) => {
+       return (
+        <Grid item xs={12} sm={6} md={4}>
+          <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
+        </Grid>
+      )
+    })}
+    </Grid>
+  </div>)
+
+
+  // return loading ? (<Typography align="center"><CircularProgress /></Typography>) : (
+  //   <div>
+  //     <Typography gutterBottom align="center" variant="h2">Need recommendations for places to visit in {trip.city}?</Typography>
+  //     <Grid container spacing={2}>
+  //     {recs.length > 0 ?? recs.filter((rec) => rec.name && rec.address).map((rec) => {
+  //        return (
+  //         <Grid item xs={12} sm={6} md={4}>
+  //           <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
+  //         </Grid>
+  //       )
+  //     })}
+  //     </Grid>
+  //   </div>
+  // )
 }
