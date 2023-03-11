@@ -1,5 +1,6 @@
-import React from 'react'
-import { Grid, Typography, Box, Button } from '@material-ui/core';
+import React from 'react';
+import { Grid, Typography, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import RegistrationForm from './RegistrationForm';
 
 const styles = {
   root: {
@@ -10,6 +11,16 @@ const styles = {
 };
 
 const Welcome = () => {
+  const [openRegistrationForm, setOpenRegistrationForm] = React.useState(false);
+
+  const clickRegistrationForm = () => {
+    setOpenRegistrationForm(true);
+  };
+
+  const closeRegistrationForm = () => {
+    setOpenRegistrationForm(false);
+  };
+  
   return (
     <Box sx={styles.root}>
       <Grid container spacing={5} style={{padding: "4rem", display: "flex", alignItems: "center"}}>
@@ -19,12 +30,26 @@ const Welcome = () => {
           <Typography gutterBottom variant="h6">Create and view all of your trips, keep track of trip activities and view recommendations for where to visit during your stay.</Typography>
           {/* <Typography gutterBottom variant="subtitle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Typography>
           <Typography gutterBottom variant="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Typography> */}
-          <Button variant="outlined" color="primary">Get Started</Button>
+          <Button variant="outlined" color="primary" onClick={clickRegistrationForm}>Create Account</Button>
         </Grid>
         <Grid item xs={12} md={5}>
           <img align="center" class="animated-card-slow" width="100%" alt="woman in canoe" src="https://i.ibb.co/ZVFK4CJ/roberto-nickson-7-Bjm-DICVlo-E-unsplash-modified.png"></img>
         </Grid>
       </Grid>
+
+      <Dialog open={openRegistrationForm} onClose={closeRegistrationForm} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Create A New Account</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Create a new account here.
+          </DialogContentText>
+            <RegistrationForm />
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={closeRegistrationForm} color="primary"> Cancel</Button>
+            <Button color="primary" variant='contained'>Register</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }
