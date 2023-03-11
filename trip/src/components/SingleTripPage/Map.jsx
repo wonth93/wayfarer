@@ -17,7 +17,7 @@ function Map({activities, trip}) {
   const mapAPIkey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   Geocode.setApiKey(`${mapAPIkey}`);
 
-  const [map, setMap] = React.useState(null)
+  const [map, setMap] = useState(null)
   const [city, setCity] = useState({ lat: 0, lng: 0 })
   const [hotel, setHotel] = useState({ lat: 0, lng: 0 })
   const [markers, setMarkers] = useState([{ address: "", lat: 0, lng: 0 }]);

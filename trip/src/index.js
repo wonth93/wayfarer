@@ -6,10 +6,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { AppProvider } from "./context";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
 import "typeface-source-sans-pro";
 
-// Define your custom typography
+// Setting MUI Typoraphy as custom throughout application
 const customTheme = createTheme({
   typography: {
     fontFamily: ["Source Sans Pro", "Arial", "sans-serif"].join(","),
@@ -23,7 +22,6 @@ const customTheme = createTheme({
       fontWeight: 600,
       letterSpacing: "-0.00833em",
     },
-    // Add more styles as needed
   },
 });
 

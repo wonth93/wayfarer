@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import SingleTrip from "./pages/SingleTrip";
@@ -13,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trips/:id" element={<SingleTrip />} />
-          {/* <Route path="/testMap" element={<Map />} /> */}
         </Routes>
       </div>
     </Router>

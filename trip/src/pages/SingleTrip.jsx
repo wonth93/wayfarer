@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import TripInfoContainer from "../components/Single_Trip/Trip/TripInfoContainer"
-import ActivityContainer from '../components/Single_Trip/Activities/ActivityContainer';
-import { RecommendationList } from '../components/Single_Trip/Recommendations/RecommendationList';
-import ActivityForm from '../components/Single_Trip/Activities/ActivityForm';
+import TripInfoContainer from "../components/SingleTripPage/Trip/TripInfoContainer"
+import ActivityContainer from '../components/SingleTripPage/Activities/ActivityContainer';
+import { RecommendationList } from '../components/SingleTripPage/Recommendations/RecommendationList';
+import ActivityForm from '../components/SingleTripPage/Activities/ActivityForm';
 import TripForm from '../components/Trips/TripForm';
-import Map from '../components/Single_Trip/Map';
+import Map from '../components/SingleTripPage/Map';
 import date from 'date-and-time';
 
 import Button from '@material-ui/core/Button';
