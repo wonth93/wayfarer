@@ -6,6 +6,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import LoginForm from './LoginForm';
+import { Dialog, DialogTitle, DialogActions } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = () => {
-  const { loggedUser, login, logout } = useGlobalContext(); 
+  const { loggedUser, login, logout, clickLoginForm, closeLoginForm, openLoginForm, setOpenLoginForm } = useGlobalContext(); 
 
   const classes = useStyles();
 
@@ -38,7 +40,18 @@ const Navbar = () => {
           <Typography variant="h2" className={classes.title}>
             WAYFARER
           </Typography>
-          {!loggedUser && <Button onClick={login} color="inherit" className={classes.button}>Login</Button>}
+          {!loggedUser && <Button color="inherit" onClick={clickLoginForm} className={classes.button}>Login</Button>}
+
+          <Dialog open={openLoginForm} onClose={closeLoginForm}>
+            <DialogTitle id="form-dialog-title">Login</DialogTitle>
+            <DialogActions>
+              <LoginForm />
+            </DialogActions>
+            <DialogActions>
+              {!loggedUser && <Button onClick={closeLoginForm} color="inherit">Cancel</Button>}
+              {!loggedUser && <Button onClick={login} color="inherit" variant='contained'>Login</Button>}
+            </DialogActions>
+          </Dialog>
           {loggedUser && <><Typography>Welcome back, {loggedUser.name}!</Typography><Link onClick={logout} to={'/'}><Button color="inherit" className={classes.button}>Logout</Button></Link></>}
         </Toolbar>
       </AppBar>

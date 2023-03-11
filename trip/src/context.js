@@ -18,6 +18,7 @@ const AppProvider = ({ children }) => {
     trip: {},
   });
   const [userTrips, setUserTrips] = useState([]);
+  const [openLoginForm, setOpenLoginForm] = useState(false);
 
   // Calling all the data and setting application state
   useEffect(() => {
@@ -38,6 +39,14 @@ const AppProvider = ({ children }) => {
 
   //////// User Functionality ////////
 
+  const clickLoginForm = () => {
+    setOpenLoginForm(true);
+  };
+
+  const closeLoginForm = () => {
+    setOpenLoginForm(false);
+  };
+
   //Login function
   const login = () => {
     cookies.set("user_id", 1, { path: "/" });
@@ -45,6 +54,7 @@ const AppProvider = ({ children }) => {
       ...prev,
       user: cookies.get("user_id"),
     }));
+    setOpenLoginForm(false);
   };
 
   //Logout function
@@ -68,6 +78,10 @@ const AppProvider = ({ children }) => {
         loggedUser,
         userTrips,
         setUserTrips,
+        clickLoginForm,
+        closeLoginForm,
+        openLoginForm,
+        setOpenLoginForm
       }}
     >
       {children}

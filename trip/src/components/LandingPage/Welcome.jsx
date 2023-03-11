@@ -43,7 +43,7 @@ const Welcome = () => {
           <DialogContentText>
             Create a new account here.
           </DialogContentText>
-            <RegistrationForm />
+          <RegistrationForm />
         </DialogContent>
         <DialogActions>
             <Button onClick={closeRegistrationForm} color="primary"> Cancel</Button>
@@ -54,4 +54,4 @@ const Welcome = () => {
   )
 }
 
-export default Welcome
+export default Welcome;
