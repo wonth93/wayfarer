@@ -35,21 +35,17 @@ const ActivityListItem = ({activity_name, activity_address, id, deleteActivity, 
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={2}>
-            {/* <Typography variant="h6">Column 1</Typography> */}
             <Typography variant="subtitle1">{activity_date}</Typography>
             <Typography variant="subtitle1">{activity_time}</Typography>
           </Grid>
           <Grid item xs={12} sm={3}>
-            {/* <Typography variant="h6">Column 2</Typography> */}
             <Typography variant="subtitle1">{activity_name}</Typography>
             <Typography variant="overline">{activity_type}</Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
-            {/* <Typography variant="h6">Column 3</Typography> */}
             <Typography>{activity_address}</Typography>
           </Grid>
           <Grid item xs={12} sm={1}>
-            {/* <Typography variant="h6">Column 4</Typography> */}
             <Typography variant="subtitle1">${activity_cost}</Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
