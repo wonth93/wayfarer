@@ -1,11 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Card, CardMedia, CardContent, Typography, Box } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import ActivityForm from './Activities/ActivityForm'
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Button } from '@material-ui/core'
 // import { }
 
-const RecommendationListItem = ({rec}) => {
+const RecommendationListItem = ({rec, trip, open, setOpen, handleClickOpen, handleClose, addActivity}) => {
+  // const [open, setOpen] = useState(false)
+  
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
    return (
+    <>
     <Card elevation={6} className="animated-card">
       <CardMedia 
       style={{height: 300}}
@@ -15,7 +33,7 @@ const RecommendationListItem = ({rec}) => {
         <CardContent>
           <Typography gutterBottom variant="h5">{rec.name}</Typography>
           <Box>
-            <Typography gutterBottom variant='subtitle1'>{rec.address ? rec.address : "Multiple Locations"}</Typography>
+            <Typography gutterBottom variant='subtitle1'>{rec.address}</Typography>
           </Box>
           {/* <Box display="flex" justifyContent="space-between">
             <Typography variant='subtitle1'>Activity Type</Typography>
@@ -23,6 +41,25 @@ const RecommendationListItem = ({rec}) => {
           </Box> */}
         </CardContent>
     </Card>
+
+    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Add Activity</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Add a new activity here.
+          </DialogContentText>
+          <ActivityForm addActivity={addActivity} handleClose={handleClose} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          {/* <Button onClick={handleClose} color="primary">
+            Subscribe
+          </Button> */}
+        </DialogActions>
+      </Dialog>
+    </>
   )
 }
 

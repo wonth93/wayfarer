@@ -5,14 +5,11 @@ import RecommendationListItem from './RecommendationListItem';
 import { Grid, Typography } from '@material-ui/core';
 import { CircularProgress } from '@material-ui/core';
 
-export const RecommendationList = ({trip}) => {
+export const RecommendationList = ({trip, open, setOpen, handleClickOpen, handleClose, addActivity }) => {
 const [recs, setRecs] = useState([])
 const [city, setCity] = useState({})
 const [type, setType] = useState("restaurants")
 const [loading, setLoading] = useState(false)
-
-  // const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/output?keyword=${trip.city}`
-  // const URL = `https://maps.googleapis.com/maps/api/place/nearbysearch/output?keyword=${trip.hotel_address}`
 
   const mapAPIkey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   Geocode.setApiKey(`${mapAPIkey}`);
@@ -87,7 +84,7 @@ const [loading, setLoading] = useState(false)
       {recs.filter((rec) => rec.name && rec.address).map((rec) => {
          return (
           <Grid item xs={12} sm={6} md={4}>
-            <RecommendationListItem key={parseInt(Math.random() * 1000)} rec={rec}/>
+            <RecommendationListItem key={parseInt(Math.random() * 1000)} trip={trip} rec={rec} open={open} setOpen={setOpen} handleClickOpen={handleClickOpen} handleClose={handleClose} addActivity={addActivity} />
           </Grid>
         )
       })}
