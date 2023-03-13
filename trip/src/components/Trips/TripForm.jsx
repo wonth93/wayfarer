@@ -59,12 +59,11 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
 
   return (
     <div>
-      {/*<button onClick={() => console.log(trip.id)}>test</button>*/}
+      {/* <button onClick={() => console.log(city)}>test</button> */}
       <form onSubmit={handleSubmit}>
         <TextField
           label="City"
           defaultValue={(trip) ? trip.city : ""}
-          // value={city}
           onChange={(e) => setCity(e.target.value)}
           fullWidth
           margin="normal"
@@ -146,6 +145,9 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
           InputLabelProps={{
             shrink: true,
           }}
+          error={returnFlightDate < departureFlightDate ? true : false}
+          variant={returnFlightDate < departureFlightDate === "Error" ? "filled" : "standard"}
+          helperText={returnFlightDate < departureFlightDate ? "Return flight date cannot be eariler than departure flight date!" : ""}
         />
         <TextField
           id="time"
