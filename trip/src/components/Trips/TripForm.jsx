@@ -145,9 +145,8 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
           InputLabelProps={{
             shrink: true,
           }}
-          error={returnFlightDate < departureFlightDate ? true : false}
-          variant={returnFlightDate < departureFlightDate === "Error" ? "filled" : "standard"}
-          helperText={returnFlightDate < departureFlightDate ? "Return flight date cannot be eariler than departure flight date!" : ""}
+          error={returnFlightDate < departureFlightDate && returnFlightDate ? true : false}
+          helperText={returnFlightDate < departureFlightDate && returnFlightDate ? "Return flight date cannot be eariler than departure flight date!" : ""}
         />
         <TextField
           id="time"

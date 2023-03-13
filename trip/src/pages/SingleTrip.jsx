@@ -233,7 +233,7 @@ const SingleTrip = () => {
           <DialogContentText>
             Add a new activity here.
           </DialogContentText>
-          <ActivityForm addActivity={addActivity} handleClose={handleClose} />
+          <ActivityForm addActivity={addActivity} handleClose={handleClose} trip={trip}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

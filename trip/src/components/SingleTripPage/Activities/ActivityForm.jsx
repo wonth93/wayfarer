@@ -12,7 +12,7 @@ import { useGlobalContext } from "../../../context";
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 
-const ActivityForm = ({addActivity, handleClose}) => {
+const ActivityForm = ({addActivity, handleClose, trip}) => {
   const { state } = useGlobalContext();
   const { id } = useParams()
 
@@ -85,6 +85,8 @@ const ActivityForm = ({addActivity, handleClose}) => {
   };
 
   return (
+    <div>
+    {/* <button onClick={() => console.log(date)}>test</button> */}
     <form onSubmit={handleSubmit}>
       <TextField
         label="Activity Name"
@@ -122,22 +124,24 @@ const ActivityForm = ({addActivity, handleClose}) => {
         InputLabelProps={{
           shrink: true,
         }}
+        error={date && (date < trip.departure_flight_date || date > trip.return_flight_date) ? true : false}
+        helperText={date && (date < trip.departure_flight_date || date > trip.return_flight_date) ? "Please make sure the date falls between the trip period!" : ""}
       />
       <TextField
-    id="time"
-    label="Activity Time"
-    value={time}
-    onChange={(e) => setTime(e.target.value)}
-    type="time"
-    InputLabelProps={{
-      shrink: true,
-    }}
-    fullWidth
-        margin="normal"
-    inputProps={{
-      step: 300, // 5 min
-    }}
-  />
+        id="time"
+        label="Activity Time"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+        type="time"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        fullWidth
+            margin="normal"
+        inputProps={{
+          step: 300, // 5 min
+        }}
+      />
       <TextField
         label="Activity Type"
         value={type}
@@ -149,6 +153,7 @@ const ActivityForm = ({addActivity, handleClose}) => {
         Submit
       </Button>
     </form>
+    </div>
   );
 };
 
