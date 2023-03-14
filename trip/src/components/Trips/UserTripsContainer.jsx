@@ -8,7 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, Typography } from "@material-ui/core";
 
 const UserTripsContainer = () => {
   const [loading, setLoading] = useState(true)
@@ -104,9 +104,10 @@ const UserTripsContainer = () => {
           justifyContent: 'center',
           marginTop: '10px'
           }}>
-        <Button variant='contained' color="primary" onClick={clickTripForm}>
+        <Typography gutterBottom><Button variant='contained' color="primary" onClick={clickTripForm}>
           Add a trip
         </Button>
+        </Typography>
       </Box>
 
       <Dialog open={openTripForm} onClose={closeTripForm} aria-labelledby="form-dialog-title">
@@ -115,7 +116,8 @@ const UserTripsContainer = () => {
           <DialogContentText>
             Add a new trip here.
           </DialogContentText>
-          <TripForm addTrip={addTrip} closeTripForm={closeTripForm} />
+          <TripForm addTrip={addTrip} closeTripForm={closeTripForm} /> 
+          {/* closeTripForm={closeTripForm} */}
         </DialogContent>
         <DialogActions>
           <Button onClick={closeTripForm} color="primary">

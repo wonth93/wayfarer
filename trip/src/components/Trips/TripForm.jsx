@@ -123,9 +123,9 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
           }}
           fullWidth
               margin="normal"
-          inputProps={{
-            step: 300, // 5 min
-          }}
+          // inputProps={{
+          //   step: 300, // 5 min
+          // }}
         />
         <TextField
           label="Departure Flight Code"
@@ -159,9 +159,9 @@ const TripForm = ({addTrip, closeTripForm, editTrip, trip, setTrip}) => {
           }}
           fullWidth
               margin="normal"
-          inputProps={{
-            step: 300, // 5 min
-          }}
+          // inputProps={{
+          //   step: 300, // 5 min
+          // }}
         />
         <TextField
           label="Return Flight Code"
