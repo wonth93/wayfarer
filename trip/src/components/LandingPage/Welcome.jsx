@@ -27,7 +27,7 @@ const Welcome = () => {
         <Grid item xs={12} md={7} className="animated-card-slow">
           <Typography gutterBottom variant="h1">A Travel App for the Modern Wayfarer.</Typography>
           <Typography gutterBottom variant="h5">All of your trip information in one place - so you can focus on the destination, not the details.</Typography>
-          <Typography gutterBottom variant="h6">Create and view all of your trips, keep track of trip activities and view recommendations for where to visit during your stay.</Typography>
+          <Typography gutterBottom variant="h6">Create and view all of your trips, keep track of your trip activities and budget, and view recommendations for where to visit during your stay.</Typography>
           {/* <Typography gutterBottom variant="subtitle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Typography>
           <Typography gutterBottom variant="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Typography> */}
           <Button variant="outlined" color="primary" onClick={clickRegistrationForm}>Create Account</Button>

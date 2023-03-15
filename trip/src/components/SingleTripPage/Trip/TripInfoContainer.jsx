@@ -39,7 +39,7 @@ const TripInfoContainer = ({trip, activities, deleteTrip}) => {
               Your trip to {trip.city}, {trip.country}
             </Typography>
             <Typography gutterBottom align='center' variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
+              View important details, your total trip budget, and weather information here.
             </Typography>
           <Grid container spacing={3}>
           <Grid item xs={12} md={4}>

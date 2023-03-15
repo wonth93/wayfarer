@@ -10,12 +10,12 @@ const AppProvider = ({ children }) => {
 
   //Setting up global app state
   const [state, setState] = useState({
-    trips: [],
+    // trips: [],
     users: [],
-    activities: [],
+    // activities: [],
     user: cookies.get("user_id"),
-    tripId: "",
-    trip: {},
+    // tripId: "",
+    // trip: {},
   });
   const [userTrips, setUserTrips] = useState([]);
   const [openLoginForm, setOpenLoginForm] = useState(false);
@@ -29,9 +29,9 @@ const AppProvider = ({ children }) => {
     ]).then(([trips, users, activities]) => {
       setState((prev) => ({
         ...prev,
-        trips: trips.data.trips,
+        // trips: trips.data.trips,
         users: users.data.users,
-        activities: activities.data.activities,
+        // activities: activities.data.activities,
       }));
       setUserTrips([...trips.data.trips]);
     });
@@ -76,12 +76,12 @@ const AppProvider = ({ children }) => {
         login,
         logout,
         loggedUser,
-        userTrips,
-        setUserTrips,
+        // userTrips,
+        // setUserTrips,
         clickLoginForm,
         closeLoginForm,
         openLoginForm,
-        setOpenLoginForm
+        setOpenLoginForm,
       }}
     >
       {children}
